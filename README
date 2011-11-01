@@ -1,0 +1,3 @@
+This is Moodle (http://moodle.org) autentication plugin,
+that redirects users that don't have valid ID-number set in profile
+to form that asks to insert the ID-number.
