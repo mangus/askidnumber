@@ -1,17 +1,17 @@
 <?php
 
 require('../../config.php');
+require('auth.php');
 require('insertidnumber_form.php');
 
 $context = get_context_instance(CONTEXT_SYSTEM);
 
-$PAGE->set_url("$CFG->httpswwwroot/auth/requreidnumber/form.php");
+$PAGE->set_url("$CFG->httpswwwroot/auth/askidnumber/form.php");
 $PAGE->set_context($context);
 $PAGE->set_pagelayout('login');
 
-$loginsite = get_string("loginsite");
-$PAGE->navbar->add($loginsite);
-$PAGE->set_heading('Palun sisesta oma isikukood');
+$PAGE->navbar->add(get_string("loginsite"));
+$PAGE->set_heading(get_string('pleaseinsertyouridnumber', 'auth_askidnumber'));
 
 // Outuput start...
 echo $OUTPUT->header();

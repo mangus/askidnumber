@@ -7,13 +7,13 @@
  *
  */
 
-require_once($CFG->libdir.'/authlib.php');
+ask_once($CFG->libdir.'/authlib.php');
 
-class auth_plugin_requireidnumber extends auth_plugin_base {
+class auth_plugin_askidnumber extends auth_plugin_base {
 
     /** Constructor */
-    function auth_plugin_requireidnumber() {
-        $this->authtype = 'requireidnumber';
+    function auth_plugin_askidnumber() {
+        $this->authtype = 'askidnumber';
     }
 
     function user_authenticated_hook($user) {
@@ -22,7 +22,7 @@ class auth_plugin_requireidnumber extends auth_plugin_base {
         {   // Here We ask to insert the correct ID-number
             $USER = complete_user_login($user);
 
-            $goto = $CFG->wwwroot.'/auth/requireidnumber/form.php'; // TODO
+            $goto = $CFG->wwwroot.'/auth/askidnumber/form.php'; // TODO
             header("Location: $goto");
             die();
         }
@@ -34,24 +34,6 @@ class auth_plugin_requireidnumber extends auth_plugin_base {
             return false;
         return true;
     }
-
-    /**
-     * Custom auth hook for web services.
-     * @param string $username
-     * @param string $password
-     * @return bool success
-     */
-    /*
-    function user_login_requireidnumber($username, $password) {
-        global $CFG, $DB;
-        die('test1');
-        // special web service login
-        if ($user = $DB->get_record('user', array('username'=>$username, 'mnethostid'=>$CFG->mnet_localhost_id))) {
-            return validate_internal_user_password($user, $password);
-        }
-        return false;
-    }
-    */
 
     //TODO: save ID-code into ID-number field.
 }
