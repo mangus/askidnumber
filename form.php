@@ -15,7 +15,7 @@ $PAGE->set_heading(get_string('pleaseinsertyouridnumber', 'auth_askidnumber'));
 
 // Outuput start...
 echo $OUTPUT->header();
-echo $OUTPUT->box('Isikukoodi sisestamise teade ja siia alla vorm...');
+echo $OUTPUT->box(get_string('youridnumberwhy', 'auth_askidnumber'));
 
 // Form...
 $form = new auth_insertidnumber_form();
@@ -23,7 +23,6 @@ if ($fromform=$form->get_data()) {
     print_r($fromform);
     die('here We update the data...');
 } else {
-    //print_header_simple('eee1', '', "veateated", $form->focus(), "", false); 
     $form->set_data($fromform);
 }
 $form->display();
