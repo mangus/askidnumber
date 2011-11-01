@@ -4,6 +4,10 @@ require('../../config.php');
 require('auth.php');
 require('insertidnumber_form.php');
 
+// For security
+if (empty($USER->id))
+    throw new Exception('User is not logged in!');
+
 $context = get_context_instance(CONTEXT_SYSTEM);
 
 $PAGE->set_url("$CFG->httpswwwroot/auth/askidnumber/form.php");

@@ -17,8 +17,9 @@ class auth_insertidnumber_form extends moodleform {
     }
 
     static function is_unique($value) {
-        // TODO
-        return true;
+        global $DB;
+        $condition = array('idnumber' => $value);
+        return !$DB->record_exists('user', $condition);
     }
 
 }
