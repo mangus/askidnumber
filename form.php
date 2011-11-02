@@ -23,7 +23,8 @@ if ($fromform=$form->get_data())
 {   // Update the user profile...
     $USER->idnumber = $fromform->idnumber;
     $DB->update_record('user', $USER);
-    redirect($CFG->wwwroot);    
+    $goto = isset($SESSION->wantsurl) ? $SESSION->wantsurl : $CFG->wwwroot;
+    redirect($goto);    
 }
 else
     $form->set_data($fromform);

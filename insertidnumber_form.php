@@ -41,10 +41,8 @@ class auth_insertidnumber_form extends moodleform {
                 $s += $k * $subcode{$i}; 
                 $k  = ( 9 == $k ? 1 : $k + 1 ); 
             }
-            if ( ( $s %= 11 ) < 10 ) 
-            { 
+            if ( ( $s %= 11 ) < 10 )  
                 break;
-            } 
         }
         return substr($code, -1) == $s;
     }    

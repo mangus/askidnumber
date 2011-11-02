@@ -11,5 +11,5 @@ $string['err_whyempty'] = 'Please insert your ID-number';
 $string['err_wronglenght'] = 'The ID-number should be exactly 11 number long';
 $string['err_notnumber'] = 'The ID-number should contain only numbers';
 $string['err_notunique'] = 'Inserted ID-number already exists in Moodle database. Please contact Moodle helpdesk.';
-$string['err_incorrectid'] = 'Inserted ID-number is not a correct Estonian ID-number.';
+$string['err_incorrectid'] = 'Inserted ID-number is not a correct Estonian ID-number';
 
