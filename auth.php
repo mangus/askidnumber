@@ -17,14 +17,12 @@ class auth_plugin_askidnumber extends auth_plugin_base {
     }
 
     function user_authenticated_hook($user) {
-        global $OUTPUT;
+        global $CFG;
         if (!$this->valididnumber($user->idnumber))
         {   // Here We ask to insert the correct ID-number
             $USER = complete_user_login($user);
-
-            $goto = $CFG->wwwroot.'/auth/askidnumber/form.php'; // TODO
-            header("Location: $goto");
-            die();
+            $goto = $CFG->wwwroot.'/auth/askidnumber/form.php';
+            redirect($goto);
         }
     }
 
@@ -34,7 +32,5 @@ class auth_plugin_askidnumber extends auth_plugin_base {
             return false;
         return true;
     }
-
-    //TODO: save ID-code into ID-number field.
 }
 
