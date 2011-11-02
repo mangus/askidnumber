@@ -1,8 +1,8 @@
 <?php
 
-require('../../config.php');
-require('auth.php');
-require('insertidnumber_form.php');
+require_once('../../config.php');
+require_once('auth.php');
+require_once('insertidnumber_form.php');
 
 // For security
 if (empty($USER->id))

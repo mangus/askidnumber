@@ -8,6 +8,7 @@
  */
 
 require_once($CFG->libdir.'/authlib.php');
+require_once('insertidnumber_form.php');
 
 class auth_plugin_askidnumber extends auth_plugin_base {
 
@@ -18,7 +19,7 @@ class auth_plugin_askidnumber extends auth_plugin_base {
 
     function user_authenticated_hook($user) {
         global $CFG;
-        if (!$this->valididnumber($user->idnumber))
+        if (!auth_insertidnumber_form::valid_estonian_idnumber($user->idnumber))
         {   // Here We ask to insert the correct ID-number
             $USER = complete_user_login($user);
             $goto = $CFG->wwwroot.'/auth/askidnumber/form.php';
