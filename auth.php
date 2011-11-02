@@ -26,12 +26,5 @@ class auth_plugin_askidnumber extends auth_plugin_base {
             redirect($goto);
         }
     }
-
-    private function valididnumber($idnumber)
-    {
-        if (strlen($idnumber) != 11)
-            return false;
-        return true;
-    }
 }
 
