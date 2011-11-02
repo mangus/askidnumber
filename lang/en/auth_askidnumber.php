@@ -12,4 +12,3 @@ $string['err_wronglenght'] = 'The ID-number should be exactly 11 number long';
 $string['err_notnumber'] = 'The ID-number should contain only numbers';
 $string['err_notunique'] = 'Inserted ID-number already exists in Moodle database. Please contact Moodle helpdesk.';
 
-

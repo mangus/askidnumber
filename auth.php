@@ -3,7 +3,7 @@
  * @author Mart Mangus
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  *
- * Authentication Plugin: Requre ID-number in login when it is not set
+ * Authentication Plugin: Ask for ID-number in login when it is not set
  *
  */
 
