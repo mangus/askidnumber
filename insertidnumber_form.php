@@ -16,10 +16,10 @@ class auth_insertidnumber_form extends moodleform {
             'rangelength', array(11, 11), 'client');
         $mform->addRule('idnumber', get_string('err_notnumber', 'auth_askidnumber'),
             'numeric', null, 'client');
-        $mform->addRule('idnumber', get_string('err_notunique', 'auth_askidnumber'),
-            'callback', 'auth_insertidnumber_form::is_unique', 'server');
         $mform->addRule('idnumber', get_string('err_incorrectid', 'auth_askidnumber'),
             'callback', 'auth_insertidnumber_form::valid_estonian_idnumber', 'server');
+        $mform->addRule('idnumber', get_string('err_notunique', 'auth_askidnumber'),
+            'callback', 'auth_insertidnumber_form::is_unique', 'server');
         $this->add_action_buttons(false);
     }
 
