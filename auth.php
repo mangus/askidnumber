@@ -26,5 +26,9 @@ class auth_plugin_askidnumber extends auth_plugin_base {
             redirect($goto);
         }
     }
+
+    function user_login($username, $password) {
+        return false;
+    }
 }
 
