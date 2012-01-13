@@ -33,7 +33,7 @@ class auth_insertidnumber_form extends moodleform {
     static function valid_estonian_idnumber($code) {
         if(strlen($code) != 11 || !is_numeric($code)) return false;
         $subcode = substr($code, 0, -1);
-        for ( $k = 1; $k <= 3; $k += 1 ) 
+        for ( $k = 1; $k <= 3; ++$k ) 
         {
             $s = 0;
             for ( $i = 0; $i < 10; ++$i ) 
