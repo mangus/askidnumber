@@ -18,11 +18,17 @@ class auth_plugin_askidnumber extends auth_plugin_base {
     }
 
     function user_authenticated_hook($user) {
-        global $CFG;
+        global $CFG, $SESSION;
 
         if (isset($user->profile['dontaskidnumber']) && $user->profile['dontaskidnumber'])
             // Administrator has set dontaskidnumber to true
             return;
+
+        if ($user->preference['auth_forcepasswordchange'])
+        {   // Still ask for ID number after password change
+            $SESSION->wantsurl = $CFG->wwwroot.'/auth/askidnumber/form.php';
+            return;
+        }
 
         if (!auth_insertidnumber_form::valid_estonian_idnumber($user->idnumber))
         {   // Here We ask to insert the correct ID-number

@@ -14,7 +14,7 @@ $PAGE->set_url("$CFG->httpswwwroot/auth/askidnumber/form.php");
 $PAGE->set_context($context);
 $PAGE->set_pagelayout('login');
 
-$PAGE->navbar->add(get_string("loginsite"));
+//$PAGE->navbar->add(get_string("loginsite"));
 $PAGE->set_heading(get_string('pleaseinsertyouridnumber', 'auth_askidnumber'));
 
 // Form...
