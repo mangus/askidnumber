@@ -24,14 +24,14 @@ class auth_plugin_askidnumber extends auth_plugin_base {
             // Administrator has set dontaskidnumber to true
             return;
 
-        if ($user->preference['auth_forcepasswordchange'])
-        {   // Still ask for ID number after password change
-            $SESSION->wantsurl = $CFG->wwwroot.'/auth/askidnumber/form.php';
-            return;
-        }
-
         if (!auth_insertidnumber_form::valid_estonian_idnumber($user->idnumber))
-        {   // Here We ask to insert the correct ID-number
+        {
+            if ($user->preference['auth_forcepasswordchange'])
+            {   // Still ask for ID number after password change
+                $SESSION->wantsurl = $CFG->wwwroot.'/auth/askidnumber/form.php';
+                return;
+            }
+            // Here We ask to insert the correct ID-number
             $USER = complete_user_login($user);
             $goto = $CFG->wwwroot.'/auth/askidnumber/form.php';
             redirect($goto);
