@@ -20,8 +20,8 @@ class auth_plugin_askidnumber extends auth_plugin_base {
     function user_authenticated_hook($user) {
         global $CFG, $SESSION;
 
-	if (!$user->confirmed)
-            return;
+	    if (!$user->confirmed)
+                return;
 
         if (isset($user->profile['dontaskidnumber']) && $user->profile['dontaskidnumber'])
             // Administrator has set dontaskidnumber to true
