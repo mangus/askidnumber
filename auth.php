@@ -21,7 +21,7 @@ class auth_plugin_askidnumber extends auth_plugin_base {
         global $CFG, $SESSION;
 
 	    if (!$user->confirmed)
-                return;
+            return;
 
         if (isset($user->profile['dontaskidnumber']) && $user->profile['dontaskidnumber'])
             // Administrator has set dontaskidnumber to true
@@ -29,14 +29,21 @@ class auth_plugin_askidnumber extends auth_plugin_base {
 
         if (!auth_insertidnumber_form::valid_estonian_idnumber($user->idnumber))
         {
+            // Creating key for login after ID-number insert
+            $key = $this->create_key($user->id);
+
+            /*
             if ($user->preference['auth_forcepasswordchange'])
             {   // Still ask for ID number after password change
                 $SESSION->wantsurl = $CFG->wwwroot.'/auth/askidnumber/form.php';
                 return;
             }
+            */
+
             // Here We ask to insert the correct ID-number
-            $USER = complete_user_login($user);
-            $goto = $CFG->wwwroot.'/auth/askidnumber/form.php';
+            //$USER = complete_user_login($user);
+
+            $goto = $CFG->wwwroot.'/auth/askidnumber/form.php?key=' . $key;
             redirect($goto);
         }
     }
@@ -44,5 +51,61 @@ class auth_plugin_askidnumber extends auth_plugin_base {
     function user_login($username, $password) {
         return false;
     }
+
+    function create_key($userid) {
+        global $DB;
+        $record = new stdClass();
+        $record->userid = $userid;
+        $record->secret = $key = $this->generate_secret();
+        $record->starttime = time();
+        $DB->insert_record('ask_id_number', $record);
+        return $key;
+    }
+
+    private function generate_secret() {
+        $len = 49;
+        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $string = '';
+        for ($i = 0; $i < $len; $i++) {
+            $pos = rand(0, strlen($chars)-1);
+            $string .= $chars{$pos};
+        }
+        return $string;
+    }
+
+    private function get_user_id($key) {
+        global $DB;
+        $info = $DB->get_record('ask_id_number', array('secret' => $key), 'userid');
+        return $info->userid;
+    }
+
+    function update_user_profile($key, $idnumber) {
+        global $DB;
+        $record = new stdClass();
+        $record->id = $userid = $this->get_user_id($key);
+        $record->idnumber = $idnumber;
+        $DB->update_record('user', $record, false);
+        $this->delete_key($key);
+        $this->clean_old_keys();
+        $this->login_user($userid);
+    }
+
+    function delete_key($key) {
+        global $DB;
+        $DB->delete_records('ask_id_number', array('secret' => $key));
+    }
+
+    /** Deletes used (unactive) keys from database */
+    private function clean_old_keys() {
+        global $DB;
+        $DB->delete_records_select('ask_id_number', 'starttime < ?', array(time()-300 /* 5 minutes */));
+    }
+
+    private function login_user($userid) {
+        $user = new stdClass();
+        $user->id = $userid;
+        $USER = complete_user_login($user);
+    }
+
 }
 

@@ -4,25 +4,21 @@ require_once('../../config.php');
 require_once('auth.php');
 require_once('insertidnumber_form.php');
 
-// For security
-if (empty($USER->id))
-    throw new Exception('User is not logged in!');
-
+$key = required_param('key', PARAM_ALPHANUM);
 $context = get_context_instance(CONTEXT_SYSTEM);
 
-$PAGE->set_url("$CFG->httpswwwroot/auth/askidnumber/form.php");
+$PAGE->set_url("$CFG->httpswwwroot/auth/askidnumber/form.php?key=$key");
 $PAGE->set_context($context);
 $PAGE->set_pagelayout('login');
 
-//$PAGE->navbar->add(get_string("loginsite"));
 $PAGE->set_heading(get_string('pleaseinsertyouridnumber', 'auth_askidnumber'));
 
 // Form...
 $form = new auth_insertidnumber_form();
 if ($fromform=$form->get_data())
-{   // Update the user profile...
-    $USER->idnumber = $fromform->idnumber;
-    $DB->update_record('user', $USER);
+{
+    $ask = new auth_plugin_askidnumber();
+    $ask->update_user_profile($key, $fromform->idnumber);
     $goto = isset($SESSION->wantsurl) ? $SESSION->wantsurl : $CFG->wwwroot;
     redirect($goto);    
 }
