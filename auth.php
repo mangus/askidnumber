@@ -76,13 +76,16 @@ class auth_plugin_askidnumber extends auth_plugin_base {
     private function get_user_id($key) {
         global $DB;
         $info = $DB->get_record('ask_id_number', array('secret' => $key), 'userid');
+        if (empty($info->userid))
+            throw new Exception('Invalid key for login through askidnumber');
         return $info->userid;
     }
 
     function update_user_profile($key, $idnumber) {
         global $DB;
+        $userid = $this->get_user_id($key);
         $record = new stdClass();
-        $record->id = $userid = $this->get_user_id($key);
+        $record->id = $userid;
         $record->idnumber = $idnumber;
         $DB->update_record('user', $record, false);
         $this->delete_key($key);
@@ -102,9 +105,9 @@ class auth_plugin_askidnumber extends auth_plugin_base {
     }
 
     private function login_user($userid) {
-        $user = new stdClass();
-        $user->id = $userid;
-        $USER = complete_user_login($user);
+        global $DB;
+        $usertologin = $DB->get_record('user', array('id' => $userid), $fields='*');
+        $USER = complete_user_login($usertologin);
     }
 
 }

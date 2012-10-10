@@ -20,6 +20,10 @@ class auth_insertidnumber_form extends moodleform {
             'callback', 'auth_insertidnumber_form::valid_estonian_idnumber', 'server');
         $mform->addRule('idnumber', get_string('err_notunique', 'auth_askidnumber'),
             'callback', 'auth_insertidnumber_form::is_unique', 'server');
+
+        $mform->addElement('hidden', 'secret', '');
+        $mform->addRule('secret', 'you can not hack this way', 'alphanumeric', null, 'server');
+
         $this->add_action_buttons(false);
     }
 
