@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="auth/mobile_id/db" VERSION="2012100800" COMMENT="XMLDB file for Moodle auth_mobile_id"
+<XMLDB PATH="auth/mobile_id/db" VERSION="2012102300" COMMENT="XMLDB file for Moodle auth_mobile_id"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
