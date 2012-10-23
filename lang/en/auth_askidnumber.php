@@ -4,7 +4,7 @@ $string['auth_askidnumberdescription'] = 'This plugin asks users to insert their
 $string['pluginname'] = 'Ask for ID-number after login';
 
 $string['pleaseinsertyouridnumber'] = 'Please insert your ID-number';
-$string['youridnumberwhy'] = 'ID-number is needed in Moodle for users to login with Estonian ID-card and Mobile-ID.<br />All Moodle users have to insert their Estonian ID-number.';
+$string['youridnumberwhy'] = 'ID-number is needed in Moodle for users to login with Estonian ID-card and Mobile-ID.<br />All Moodle users have to insert their Estonian ID-number.<br />If You do not have an Estonian ID-number, then please contact Moodle helpdesk (<a href="mailto:moodle@eitsa.ee">moodle@eitsa.ee</a>).';
 $string['youridnumber'] = 'Your ID-number';
 
 $string['err_whyempty'] = 'Please insert your ID-number';

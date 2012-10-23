@@ -4,7 +4,7 @@ $string['auth_askidnumberdescription'] = 'See moodul küsib pärast sisselogimis
 $string['pluginname'] = 'Küsi isikukoodi pärast sisselogimist';
 
 $string['pleaseinsertyouridnumber'] = 'Palun sisesta oma isikukood';
-$string['youridnumberwhy'] = 'Isikukood Moodles on vajalik, et kasutajatel oleks võimalik ID-kaardi ja Mobiil-ID-ga sisse logida.<br />Kõik Moodle kasutajad peavad sisestama oma isikukoodi.';
+$string['youridnumberwhy'] = 'Isikukood Moodles on vajalik, et kasutajatel oleks võimalik ID-kaardi ja Mobiil-ID-ga sisse logida.<br />Kõik Moodle kasutajad peavad sisestama oma isikukoodi.<br />Kui teil ei ole Eesti isikukoodi, siis võtke ühendust Moodle kasutajatoega (<a href="mailto:moodle@eitsa.ee">moodle@eitsa.ee</a>).';
 $string['youridnumber'] = 'Sinu isikukood';
 
 $string['err_whyempty'] = 'Palun sisesta allolevasse lahtrisse oma isikukood';
