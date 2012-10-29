@@ -23,6 +23,7 @@ class askidnumber_bulkactions {
     }
 
     private function list_to_array($commalist) {
+        // No need for validation -- already validated in form
         $list = explode(',', trim($commalist));
         return array_map('trim', $list);
     }
