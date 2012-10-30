@@ -1,6 +1,6 @@
 <?php
 
-$string['auth_askidnumberdescription'] = 'This plugin asks users to insert their id-number during login if it is not set in user profile';
+$string['auth_askidnumberdescription'] = 'This plugin asks users to insert their id-number during login if it is not set in user profile.<br />You can switch off ID-number asking for alot of users through <a href="/auth/askidnumber/bulk_actions/">this form</a>.';
 $string['pluginname'] = 'Ask for ID-number after login';
 
 $string['pleaseinsertyouridnumber'] = 'Please insert your ID-number';

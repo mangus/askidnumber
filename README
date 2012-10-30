@@ -1,3 +1,7 @@
 This is Moodle (http://moodle.org) autentication plugin,
 that requires users to insert ID-number during login.
 Without ID-number it is not possible to login.
+
+There is also bulk action for making alot of users
+not to insert ID-number. For this to work,
+check /bulk_action/bulk_actions.php file at line 6.

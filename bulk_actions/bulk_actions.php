@@ -2,6 +2,9 @@
 
 class askidnumber_bulkactions {
 
+    /* ID for changing field in 'user_info_field' table. This needs checking/modifing, when installing this plugin */
+    private $userinfofieldid = 1;
+
     public function dont_ask_idnumber($cslist) {
         global $DB;
         $list = $this->list_to_array($cslist);
@@ -34,7 +37,7 @@ class askidnumber_bulkactions {
         $data = new stdClass();
         $data->userid = $userid;
         $data->data = true;
-        $data->fieldid = /*TODO*/1;
+        $data->fieldid = $this->userinfofieldid;
  
         if ($dataid = $DB->get_field('user_info_data', 'id', array('userid' => $data->userid, 'fieldid' => $data->fieldid))) {
             $data->id = $dataid;
