@@ -9,7 +9,10 @@ class askidnumber_bulkactions_form extends moodleform {
     function definition() {
         global $CFG;
         $mform =& $this->_form;
-        $mform->addElement('textarea', 'list', get_string('insertcommaseparatedlist', 'auth_askidnumber'), 'wrap="virtual" rows="14" cols="100"');
+        $mform->addElement('textarea', 'list', get_string('insertcommaseparatedlist', 'auth_askidnumber'),
+            'wrap="virtual" rows="14" cols="100"');
+        $mform->addRule('list', get_string('insertcommaseparatedlist', 'auth_askidnumber'),
+            'required', null, 'client');
         $mform->addRule('list', get_string('err_list', 'auth_askidnumber'),
             'callback', 'askidnumber_bulkactions_form::is_valid_input', 'server');
         $this->add_action_buttons(true);
