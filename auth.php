@@ -17,7 +17,7 @@ class auth_plugin_askidnumber extends auth_plugin_base {
         $this->authtype = 'askidnumber';
     }
 
-    function user_authenticated_hook($user) {
+    function user_authenticated_hook($user, $username, $password) {
         global $CFG, $SESSION;
 
 	    if (!$user->confirmed)
