@@ -22,3 +22,5 @@ $string['err_list'] = 'Inserted value is not a valid comma separated e-mail list
 $string['usersnotfound'] = 'Following e-mails are not connected to any Moodle user:';
 $string['usersmodified'] = 'Following users (with e-mails) were modified not to ask for idnumber:';
 
+$string['toidcodeinsert'] = 'To ID-number entering';
+

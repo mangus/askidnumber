@@ -22,3 +22,5 @@ $string['err_list'] = 'Sisestatud väärtus ei ole korrektne komadega eraldatud 
 $string['usersnotfound'] = 'Järgnevad e-posti aadressid ei ole ühegi Moodle kontoga seotud:';
 $string['usersmodified'] = 'Kasutajad (koos e-posti aadressitega), keda muudeti mitte küsima isikukoodi:';
 
+$string['toidcodeinsert'] = 'Isikukoodi sisestama';
+

@@ -18,7 +18,6 @@ class auth_plugin_askidnumber extends auth_plugin_base {
     }
 
     function user_authenticated_hook(&$user, $username, $password) {
-        global $CFG, $SESSION;
 
 	    if (!$user->confirmed)
             return;
@@ -27,24 +26,8 @@ class auth_plugin_askidnumber extends auth_plugin_base {
             // Administrator has set dontaskidnumber to true
             return;
 
-        if (!auth_insertidnumber_form::valid_estonian_idnumber($user->idnumber))
-        {
-            // Creating key for login after ID-number insert
-            $key = $this->create_key($user->id);
-
-            /*
-            if ($user->preference['auth_forcepasswordchange'])
-            {   // Still ask for ID number after password change
-                $SESSION->wantsurl = $CFG->wwwroot.'/auth/askidnumber/form.php';
-                return;
-            }
-            */
-
-            // Here We ask to insert the correct ID-number
-            //$USER = complete_user_login($user);
-
-            $goto = $CFG->wwwroot.'/auth/askidnumber/form.php?key=' . $key;
-            redirect($goto);
+        if (!auth_insertidnumber_form::valid_estonian_idnumber($user->idnumber)) {
+            redirect($this->generate_url($user->id));
         }
     }
 
@@ -108,6 +91,12 @@ class auth_plugin_askidnumber extends auth_plugin_base {
         global $DB;
         $usertologin = $DB->get_record('user', array('id' => $userid), $fields='*');
         $USER = complete_user_login($usertologin);
+    }
+
+    public function generate_url($userid) {
+        global $CFG;
+        $key = $this->create_key($userid);
+        return $CFG->wwwroot.'/auth/askidnumber/form.php?key=' . $key;
     }
 
 }
