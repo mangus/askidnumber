@@ -56,7 +56,7 @@ class auth_plugin_askidnumber extends auth_plugin_base {
         return $string;
     }
 
-    private function get_user_id($key) {
+    public static function get_user_id($key) {
         global $DB;
         $info = $DB->get_record('ask_id_number', array('secret' => $key), 'userid');
         if (empty($info->userid))

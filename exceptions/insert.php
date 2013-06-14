@@ -33,9 +33,13 @@ echo $OUTPUT->header();
 if (isset($done)) { // Successful form submit
     echo $OUTPUT->box(get_string('exceptionsent', 'auth_askidnumber'));
 } else {
-    echo $OUTPUT->box(get_string('exceptionreason', 'auth_askidnumber'));
-    $form->display();
-    echo get_string('exceptionhandling', 'auth_askidnumber');
+    if (askidnumber_exceptions::has_unanswered_application($key)) {
+        echo $OUTPUT->box(get_string('unansweredapplication', 'auth_askidnumber'));
+    } else {
+        echo $OUTPUT->box(get_string('exceptionreason', 'auth_askidnumber'));
+        $form->display();
+        echo get_string('exceptionhandling', 'auth_askidnumber');
+    }
 }
 echo $OUTPUT->footer();
 
