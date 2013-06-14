@@ -28,5 +28,6 @@ if ($fromform=$form->get_data()) {
 echo $OUTPUT->header();
 echo $OUTPUT->box(get_string('youridnumberwhy', 'auth_askidnumber'));
 $form->display();
+echo html_writer::link(new moodle_url('/auth/askidnumber/exceptions/insert.php', array('key' => required_param('key', PARAM_ALPHANUM))), get_string('noestonianidnumber', 'auth_askidnumber'));
 echo $OUTPUT->footer();
 

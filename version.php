@@ -9,5 +9,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2012102300;
+$plugin->version   = 2013061400;
 $plugin->component = 'auth_askidnumber';
+

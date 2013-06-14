@@ -4,7 +4,7 @@ $string['auth_askidnumberdescription'] = 'See moodul küsib pärast sisselogimis
 $string['pluginname'] = 'Küsi isikukoodi pärast sisselogimist';
 
 $string['pleaseinsertyouridnumber'] = 'Palun sisesta oma isikukood';
-$string['youridnumberwhy'] = 'Isikukood Moodles on vajalik, et kasutajatel oleks võimalik ID-kaardi ja Mobiil-ID-ga sisse logida.<br />Kõik Moodle kasutajad peavad sisestama oma isikukoodi.<br />Kui teil ei ole Eesti isikukoodi, siis võtke ühendust Moodle kasutajatoega (<a href="mailto:moodle@eitsa.ee">moodle@eitsa.ee</a>).';
+$string['youridnumberwhy'] = 'Isikukood Moodles on vajalik, et kasutajatel oleks võimalik ID-kaardi ja Mobiil-ID-ga sisse logida.<br />Kõik Moodle kasutajad peavad sisestama oma isikukoodi.';
 $string['youridnumber'] = 'Sinu isikukood';
 
 $string['err_whyempty'] = 'Palun sisesta allolevasse lahtrisse oma isikukood';
@@ -23,4 +23,14 @@ $string['usersnotfound'] = 'Järgnevad e-posti aadressid ei ole ühegi Moodle ko
 $string['usersmodified'] = 'Kasutajad (koos e-posti aadressitega), keda muudeti mitte küsima isikukoodi:';
 
 $string['toidcodeinsert'] = 'Isikukoodi sisestama';
+
+$string['exceptioninidnumberinsertion'] = 'Isikukoodi sisestusest vabastamise taotlemine';
+$string['noestonianidnumber'] = 'Mul ei ole Eesti isikukoodi';
+$string['exceptionreason'] = 'Käesoleval lehel saad taotleda oma kasutajatunnuse vabastamist isikukoodi sisestamise nõudest. Palun põhjenda, miks sa soovid saada vabastust isikukoodi sisestamisest Moodle keskkonnas?<br /><br />Kui sul on siiski olemas Eesti isikukood (kõigile Eesti Vabariigi kodanikele on välja antud isikukood), siis palun <a href="TODO">pöördu tagasi eelmisele lehele</a>.<br /><br />NB! Isikukoodi puudumisel ei ole sul võimalik logida Moodlesse sisse ID-kaardi ega Mobiil-ID abil!';
+$string['yourreason'] = 'Sinu põhjendus isikukoodi nõudest vabanemiseks:';
+$string['pleaseinsertreason'] = 'Palun sisesta põhjendus';
+$string['sendapplication'] = 'Esitan taotluse isikukoodi nõudest vabanemiseks';
+$string['exceptionhandling'] = 'Taotluse läbivaatamine toimub käsitsi keskkonna administraatori poolt ja võtab aega umbes 24 tundi.';
+$string['exceptionsent'] = 'Sinu taotlus kasutajatunnuse vabastamiseks isikukoodi nõudest on esitatud ja vaadatakse üle 24 tunni jooksul.<br /><br />Otsus taotluse kohta saadetakase sulle kasutajatunnuse registreerimisel sisestatud e-posti aadressile.';
+
 

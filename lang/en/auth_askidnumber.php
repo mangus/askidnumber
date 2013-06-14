@@ -4,7 +4,7 @@ $string['auth_askidnumberdescription'] = 'This plugin asks users to insert their
 $string['pluginname'] = 'Ask for ID-number after login';
 
 $string['pleaseinsertyouridnumber'] = 'Please insert your ID-number';
-$string['youridnumberwhy'] = 'ID-number is needed in Moodle for users to login with Estonian ID-card and Mobile-ID.<br />All Moodle users have to insert their Estonian ID-number.<br />If You do not have an Estonian ID-number, then please contact Moodle helpdesk (<a href="mailto:moodle@eitsa.ee">moodle@eitsa.ee</a>).';
+$string['youridnumberwhy'] = 'ID-number is needed in Moodle for users to login with Estonian ID-card and Mobile-ID.<br />All Moodle users have to insert their Estonian ID-number.<br />';
 $string['youridnumber'] = 'Your ID-number';
 
 $string['err_whyempty'] = 'Please insert your ID-number';
@@ -24,3 +24,11 @@ $string['usersmodified'] = 'Following users (with e-mails) were modified not to 
 
 $string['toidcodeinsert'] = 'To ID-number entering';
 
+$string['exceptioninidnumberinsertion'] = 'Request to free from ID-number insertion';
+$string['noestonianidnumber'] = 'I don\'t have an Estonian ID code';
+$string['exceptionreason'] = 'In this page You can apply to free Your account from ID-number insertion. Please explain why You want this release in Moodle?<br /><br />If You still have an Estonian ID-number (all Estonian citizens have issued an ID-number), then please <a href="TODO">return to previous page to insert it</a>.<br /><br />NB! Without the ID-number it is not possible to login to Moodle using ID-card or Mobile-ID!';
+$string['yourreason'] = 'Your reason to free Your acount from inserting the ID-number';
+$string['pleaseinsertreason'] = 'Please insert reason';
+$string['sendapplication'] = 'Send application about ID-number insertion release';
+$string['exceptionhandling'] = 'Application review is done by Moodle administrator and takes time about 24 hours.';
+$string['exceptionsent'] = 'Your application about ID-number insertion release is sent and will be reviewed in 24 hours.<br /><br />Decision about Your application will be sent to Your e-mail address that You used during registring in Moodle.';

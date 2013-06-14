@@ -9,6 +9,7 @@ class auth_insertidnumber_form extends moodleform {
         global $CFG;
         $mform =& $this->_form;
         $mform->addElement('text', 'idnumber', get_string('youridnumber', 'auth_askidnumber'), array('size'=>'11'));
+        $mform->setType('idnumber', PARAM_INT);
 
         $mform->addRule('idnumber', get_string('err_whyempty', 'auth_askidnumber'),
             'required', null, 'client');
@@ -22,6 +23,7 @@ class auth_insertidnumber_form extends moodleform {
             'callback', 'auth_insertidnumber_form::is_unique', 'server');
 
         $mform->addElement('hidden', 'secret', '');
+        $mform->setType('secret', PARAM_NOTAGS);
         $mform->addRule('secret', 'you can not hack this way', 'alphanumeric', null, 'server');
 
         $this->add_action_buttons(false);
