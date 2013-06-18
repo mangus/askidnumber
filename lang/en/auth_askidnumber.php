@@ -26,11 +26,11 @@ $string['toidcodeinsert'] = 'To ID-number entering';
 
 $string['exceptioninidnumberinsertion'] = 'Request to free from ID-number insertion';
 $string['noestonianidnumber'] = 'I don\'t have an Estonian ID code';
-$string['exceptionreason'] = 'In this page You can apply to free Your account from ID-number insertion. Please explain why You want this release in Moodle?<br /><br />If You still have an Estonian ID-number (all Estonian citizens have issued an ID-number), then please <a href="TODO">return to previous page to insert it</a>.<br /><br />NB! Without the ID-number it is not possible to login to Moodle using ID-card or Mobile-ID!';
+$string['exceptionreason'] = 'In this page You can apply to free Your account from ID-number insertion. Please explain why You want this release in Moodle?<br /><br />If You still have an Estonian ID-number (all Estonian citizens have issued an ID-number), then please <a href="{$a->link}">return to previous page to insert it</a>.<br /><br />NB! Without the ID-number it is not possible to login to Moodle using ID-card or Mobile-ID!';
 $string['yourreason'] = 'Your reason to free Your acount from inserting the ID-number';
 $string['pleaseinsertreason'] = 'Please insert reason';
 $string['sendapplication'] = 'Send application about ID-number insertion release';
 $string['exceptionhandling'] = 'Application review is done by Moodle administrator and takes time about 24 hours.';
 $string['exceptionsent'] = 'Your application about ID-number insertion release is sent and will be reviewed in 24 hours.<br /><br />Decision about Your application will be sent to Your e-mail address that You used during registring in Moodle.';
-$string['unansweredapplication'] = 'TÕLKIDA: Oled [taotluse esitamise kuupäev ja kellaaeg] juba esitanud taotluse isikukoodi vabastuse saamiseks. Palun oota keskkonna administraatori vastust oma taotlusele või kui sul on siiski olemas Eesti isikukood (kõigile Eesti Vabariigi kodanikele on välja antud isikukood), siis palun <a href="link isikukoodi sisestamise lehele">pöördu tagasi eelmisele lehele ja sisesta oma isikukood</a>.';
+$string['unansweredapplication'] = 'You have already send an application to free your account from inserting your ID-number at {$a->date}.<br /><br />Please wait for reply from the site administrator or if you still have an ID-number (all Estonian citizen have issued an ID-number), then please <a href="{$a->link}">return to previous page and insert your ID-number</a>.';
 

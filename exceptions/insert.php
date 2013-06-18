@@ -12,7 +12,7 @@ require_once('exceptions.php');
 require_once('insert_form.php');
 
 $context = context_system::instance();
-$PAGE->set_url("$CFG->httpswwwroot/auth/askidnumber/exceptions/insert.php");
+$PAGE->set_url(new moodle_url('/auth/askidnumber/exceptions/insert.php'));
 $PAGE->set_context($context);
 $PAGE->set_pagelayout('login');
 $PAGE->set_heading(get_string('exceptioninidnumberinsertion', 'auth_askidnumber'));
@@ -33,10 +33,14 @@ echo $OUTPUT->header();
 if (isset($done)) { // Successful form submit
     echo $OUTPUT->box(get_string('exceptionsent', 'auth_askidnumber'));
 } else {
-    if (askidnumber_exceptions::has_unanswered_application($key)) {
-        echo $OUTPUT->box(get_string('unansweredapplication', 'auth_askidnumber'));
+    $data = $form->get_submitted_data();
+    $key = isset($data->secret) ? $data->secret : required_param('key', PARAM_ALPHANUM);
+    $params['link'] = '' . new moodle_url('/auth/askidnumber/form.php', array('key' => $key));
+    if ($date = askidnumber_exceptions::has_unanswered_application($key)) {
+        $params['date'] = date('Y-m-d (H:i)', $date);
+        echo $OUTPUT->box(get_string('unansweredapplication', 'auth_askidnumber', $params));
     } else {
-        echo $OUTPUT->box(get_string('exceptionreason', 'auth_askidnumber'));
+        echo $OUTPUT->box(get_string('exceptionreason', 'auth_askidnumber', $params));
         $form->display();
         echo get_string('exceptionhandling', 'auth_askidnumber');
     }
