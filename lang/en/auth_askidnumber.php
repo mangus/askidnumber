@@ -34,3 +34,17 @@ $string['exceptionhandling'] = 'Application review is done by Moodle administrat
 $string['exceptionsent'] = 'Your application about ID-number insertion release is sent and will be reviewed in 24 hours.<br /><br />Decision about Your application will be sent to Your e-mail address that You used during registring in Moodle.';
 $string['unansweredapplication'] = 'You have already send an application to free your account from inserting your ID-number at {$a->date}.<br /><br />Please wait for reply from the site administrator or if you still have an ID-number (all Estonian citizen have issued an ID-number), then please <a href="{$a->link}">return to previous page and insert your ID-number</a>.';
 
+$string['exceptionapplications'] = 'ID-number insertion exceptions';
+$string['applicantname'] = 'Applicant name';
+$string['applicationsendtime'] = 'Send time';
+$string['reason'] = 'Reason';
+$string['choices'] = 'Choices';
+
+$string['accepted'] = 'Accepted';
+$string['accept'] = 'Accept';
+$string['reject'] = 'Reject';
+$string['rejected'] = 'Rejected';
+$string['userinsertedidnumber'] = 'User inserted ID-number';
+
+$string['message_accepted'] = 'Application accepted.';
+

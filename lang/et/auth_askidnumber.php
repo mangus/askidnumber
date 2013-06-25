@@ -34,3 +34,17 @@ $string['exceptionhandling'] = 'Taotluse läbivaatamine toimub käsitsi keskkonn
 $string['exceptionsent'] = 'Sinu taotlus kasutajatunnuse vabastamiseks isikukoodi nõudest on esitatud ja vaadatakse üle 24 tunni jooksul.<br /><br />Otsus taotluse kohta saadetakase sulle kasutajatunnuse registreerimisel sisestatud e-posti aadressile.';
 $string['unansweredapplication'] = 'Oled {$a->date} juba esitanud taotluse isikukoodi sisestamisest vabastuse saamiseks.<br /><br />Palun oota keskkonna administraatori vastust oma taotlusele või kui sul on siiski olemas Eesti isikukood (kõigile Eesti Vabariigi kodanikele on välja antud isikukood), siis palun <a href="{$a->link}">pöördu tagasi eelmisele lehele ja sisesta oma isikukood</a>.';
 
+$string['exceptionapplications'] = 'Isikukoodi sisestamisest vabastuse taotlused';
+$string['applicantname'] = 'Taotleja nimi';
+$string['applicationsendtime'] = 'Taotluse esitamise aeg';
+$string['reason'] = 'Põhjendus';
+$string['choices'] = 'Valikud';
+
+$string['accepted'] = 'Kinnitatud';
+$string['accept'] = 'Kinnita';
+$string['reject'] = 'Lükka tagasi';
+$string['rejected'] = 'Tagasi lükatud';
+$string['userinsertedidnumber'] = 'Kasutaja sisestas isikukoodi';
+
+$string['message_accepted'] = 'Kasutaja taotlus kinnitatud.';
+

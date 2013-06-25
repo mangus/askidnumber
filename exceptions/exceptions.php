@@ -27,7 +27,7 @@ class askidnumber_exceptions {
 
     public static function accept($exceptionid) {
         self::update_status($exceptionid, 'accepted');
-        notify_user($exceptionid);
+        self::notify_user($exceptionid);
     }
 
     public static function reject($exceptionid, $explination) {
