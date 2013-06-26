@@ -5,7 +5,6 @@ require_once($CFG->dirroot.'/lib/weblib.php');
 
 class askidnumber_exception_insert_form extends moodleform {
     function definition() {
-        global $CFG;
         $mform =& $this->_form;
         $mform->addElement('textarea', 'reason', get_string('yourreason', 'auth_askidnumber'),
             'rows="10" cols="80"');

@@ -9,7 +9,7 @@
 
 require_once('../../../config.php');
 require_once('exceptions.php');
-require_once('insert_form.php');
+require_once('reject_reason_form.php');
 
 $context = context_system::instance();
 $PAGE->set_url(new moodle_url('/auth/askidnumber/exceptions/admin.php'));
@@ -23,6 +23,17 @@ if ($id = optional_param('accept', false, PARAM_INT)) {
     askidnumber_exceptions::accept($id);
     $message = get_string('message_accepted', 'auth_askidnumber');
 }
+/*
+$form = new askidnumber_exception_reject_reason_form();
+if ($fromform=$form->get_data()) {
+    askidnumber_exceptions::add_exception($fromform->reason, $fromform->secret);
+    $done = true;
+} else if (!$form->is_submitted()) {
+    $key = required_param('key', PARAM_ALPHANUM);
+    $form->set_data(array('secret' => $key));
+}
+*/
+
 
 $records = $DB->get_records('ask_id_number_exception');
 
@@ -51,7 +62,7 @@ foreach($records as $request) {
     $row[] = "<a target=\"blank\" href=\"/user/view.php?id=$request->userid\">$fullname</a>";
     $row[] = "<a target=\"blank\" href=\"/user/view.php?id=$request->userid\">$user->username</a>";
     $row[] = date('Y-m-d (H:i:s)', $request->sendtime);
-    $row[] = $request->reason;
+    $row[] = htmlspecialchars($request->reason);
 
     $buttons = array();
     switch ($request->status) {
@@ -74,7 +85,16 @@ foreach($records as $request) {
     }
 
     $row[] = $status;
-    $row[] = implode(' | ', $buttons);
+
+    if (count($buttons)) {
+        $buttonsrow = implode(' | ', $buttons);
+        $form = new askidnumber_exception_reject_reason_form();
+        $form->set_data(array('exceptionid' => $request->id));
+        $buttonsrow .= $form->render();
+    } else {
+        $buttonsrow = '';
+    }
+    $row[] = $buttonsrow;
     $table->data[] = $row;
 }
 
