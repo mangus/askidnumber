@@ -46,7 +46,11 @@ $string['reject'] = 'Reject';
 $string['rejected'] = 'Rejected';
 $string['userinsertedidnumber'] = 'User inserted ID-number';
 
-$string['message_accepted'] = 'Application accepted.';
+$string['messageaccepted'] = 'Application accepted.';
+$string['messagerejected'] = 'Application rejected.';
 
 $string['rejectreason'] = 'Reject reason';
+
+$string['newrequests'] = 'New requests';
+$string['proccessedrequests'] = 'Processed requests';
 

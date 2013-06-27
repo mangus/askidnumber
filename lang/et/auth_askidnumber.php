@@ -46,7 +46,11 @@ $string['reject'] = 'Lükka tagasi';
 $string['rejected'] = 'Tagasi lükatud';
 $string['userinsertedidnumber'] = 'Kasutaja sisestas isikukoodi';
 
-$string['message_accepted'] = 'Kasutaja taotlus kinnitatud.';
+$string['messageaccepted'] = 'Kasutaja taotlus kinnitatud.';
+$string['messagerejected'] = 'Kasutaja taotlus tagasi lükatud.';
 
 $string['rejectreason'] = 'Tagasi lükkamise põhjus';
+
+$string['newrequests'] = 'Uued vabastamise taotlused';
+$string['proccessedrequests'] = 'Töödeldud taotlused';
 

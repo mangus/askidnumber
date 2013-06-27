@@ -21,21 +21,17 @@ $PAGE->set_heading(get_string('exceptionapplications', 'auth_askidnumber'));
 
 if ($id = optional_param('accept', false, PARAM_INT)) {
     askidnumber_exceptions::accept($id);
-    $message = get_string('message_accepted', 'auth_askidnumber');
+    $message = get_string('messageaccepted', 'auth_askidnumber');
 }
-/*
+
 $form = new askidnumber_exception_reject_reason_form();
 if ($fromform=$form->get_data()) {
-    askidnumber_exceptions::add_exception($fromform->reason, $fromform->secret);
-    $done = true;
-} else if (!$form->is_submitted()) {
-    $key = required_param('key', PARAM_ALPHANUM);
-    $form->set_data(array('secret' => $key));
+    askidnumber_exceptions::reject($fromform->exceptionid, $fromform->reason);
+    $message = get_string('messagerejected', 'auth_askidnumber');
 }
-*/
 
 $PAGE->requires->js('/auth/askidnumber/exceptions/admin.js');
-$records = $DB->get_records('ask_id_number_exception');
+$records = $DB->get_records('ask_id_number_exception', null, 'sendtime DESC');
 
 $table = new html_table();
 $table->attributes['class'] = 'admintable generaltable';
@@ -49,10 +45,15 @@ $table->head[] = get_string('applicationsendtime', 'auth_askidnumber');
 $table->colclasses[] = 'leftalign';
 $table->head[] = get_string('reason', 'auth_askidnumber');
 $table->colclasses[] = 'leftalign';
-$table->head[] = get_string('status');
-$table->colclasses[] = 'centeralign';
-$table->head[] = get_string('choices', 'auth_askidnumber');
-$table->colclasses[] = 'centeralign';
+
+$newtable = $table;
+$oldtable = clone $newtable;
+
+$oldtable->head[] = get_string('status');
+$oldtable->colclasses[] = 'centeralign';
+
+$newtable->head[] = get_string('choices', 'auth_askidnumber');
+$newtable->colclasses[] = 'centeralign';
 
 foreach($records as $request) {
 
@@ -75,7 +76,8 @@ foreach($records as $request) {
             $status = get_string('accepted', 'auth_askidnumber') . '<br />' .  date('Y-m-d (H:i:s)', $request->statusupdatetime);
             break;
         case 'rejected':
-            $status = get_string('rejected', 'auth_askidnumber') . '<br />' .  date('Y-m-d (H:i:s)', $request->statusupdatetime);
+            $status = get_string('rejected', 'auth_askidnumber') . '<br />' .  date('Y-m-d (H:i:s)', $request->statusupdatetime)
+                . '<br /><br />' . get_string('rejectreason', 'auth_askidnumber') . ': ' . nl2br(htmlspecialchars($request->rejectreason));
             break;
         case 'inserted':
             $status = get_string('userinsertedidnumber', 'auth_askidnumber') . '<br />' .  date('Y-m-d (H:i:s)', $request->statusupdatetime);
@@ -84,24 +86,28 @@ foreach($records as $request) {
             throw new exception('Unknown status: ' . $request->status);
     }
 
-    $row[] = $status;
-
     if (count($buttons)) {
-        $buttonsrow = html_writer::tag('span', implode(' | ', $buttons), array('id' => 'buttons_' . $request->id));
+        $buttonsrow = html_writer::tag('span', implode('&nbsp;|&nbsp;', $buttons), array('id' => 'buttons_' . $request->id));
         $form = new askidnumber_exception_reject_reason_form();
         $form->set_data(array('exceptionid' => $request->id));
         $buttonsrow .= html_writer::tag('div', $form->render(), array('id' => 'reject_form_id_' . $request->id));
+        $row[] = $buttonsrow;
+        $newtable->data[] = $row;
     } else {
-        $buttonsrow = '';
+        $row[] = $status;
+        $oldtable->data[] = $row;
     }
-    $row[] = $buttonsrow;
-    $table->data[] = $row;
 }
 
 
 echo $OUTPUT->header();
 if (isset($message))
     echo html_writer::tag('div', $message);
-echo html_writer::table($table);
+echo html_writer::tag('h2', get_string('newrequests', 'auth_askidnumber'));
+echo html_writer::table($newtable);
+
+echo html_writer::tag('h2', get_string('proccessedrequests', 'auth_askidnumber'));
+echo html_writer::table($oldtable);
+
 echo $OUTPUT->footer();
 

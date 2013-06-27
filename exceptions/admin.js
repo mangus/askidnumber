@@ -1,11 +1,15 @@
 YUI().use('node', function (Y) {
 
-    Y.all('.mform').hide();
+    var buttons = Y.all('.yui-button');
+    buttons.each(function (e) {
+        data = e._node.parentElement.id.split('_');
+        Y.one('#reject_form_id_' + data[1]).hide();
+    });
 
     Y.all('.yui-button').on('click', function (e) {
         data = e._currentTarget.parentElement.id.split('_');
-        console.log('#reject_form_id_' + data[1]);
         Y.one('#reject_form_id_' + data[1]).show();
+        Y.one('#' + e._currentTarget.parentElement.id).hide();
     });
 
 });
