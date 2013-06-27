@@ -48,3 +48,5 @@ $string['userinsertedidnumber'] = 'User inserted ID-number';
 
 $string['message_accepted'] = 'Application accepted.';
 
+$string['rejectreason'] = 'Reject reason';
+

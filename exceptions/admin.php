@@ -34,7 +34,7 @@ if ($fromform=$form->get_data()) {
 }
 */
 
-
+$PAGE->requires->js('/auth/askidnumber/exceptions/admin.js');
 $records = $DB->get_records('ask_id_number_exception');
 
 $table = new html_table();
@@ -62,14 +62,14 @@ foreach($records as $request) {
     $row[] = "<a target=\"blank\" href=\"/user/view.php?id=$request->userid\">$fullname</a>";
     $row[] = "<a target=\"blank\" href=\"/user/view.php?id=$request->userid\">$user->username</a>";
     $row[] = date('Y-m-d (H:i:s)', $request->sendtime);
-    $row[] = htmlspecialchars($request->reason);
+    $row[] = nl2br(htmlspecialchars($request->reason));
 
     $buttons = array();
     switch ($request->status) {
         case 'new':
             $status = get_string('new');
             $buttons[] = html_writer::link(new moodle_url('/auth/askidnumber/exceptions/admin.php', array('accept'=>$request->id)), get_string('accept', 'auth_askidnumber'));
-            $buttons[] = html_writer::link(new moodle_url('/auth/askidnumber/exceptions/admin.php', array('reject'=>$request->id)), get_string('reject', 'auth_askidnumber'));
+            $buttons[] = html_writer::link('#', get_string('reject', 'auth_askidnumber'), array('class' => 'yui-button'));
             break;
         case 'accepted':
             $status = get_string('accepted', 'auth_askidnumber') . '<br />' .  date('Y-m-d (H:i:s)', $request->statusupdatetime);
@@ -87,10 +87,10 @@ foreach($records as $request) {
     $row[] = $status;
 
     if (count($buttons)) {
-        $buttonsrow = implode(' | ', $buttons);
+        $buttonsrow = html_writer::tag('span', implode(' | ', $buttons), array('id' => 'buttons_' . $request->id));
         $form = new askidnumber_exception_reject_reason_form();
         $form->set_data(array('exceptionid' => $request->id));
-        $buttonsrow .= $form->render();
+        $buttonsrow .= html_writer::tag('div', $form->render(), array('id' => 'reject_form_id_' . $request->id));
     } else {
         $buttonsrow = '';
     }

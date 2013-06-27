@@ -48,3 +48,5 @@ $string['userinsertedidnumber'] = 'Kasutaja sisestas isikukoodi';
 
 $string['message_accepted'] = 'Kasutaja taotlus kinnitatud.';
 
+$string['rejectreason'] = 'Tagasi lükkamise põhjus';
+
