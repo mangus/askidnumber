@@ -11,13 +11,17 @@ require_once('../../../config.php');
 require_once('exceptions.php');
 require_once('reject_reason_form.php');
 
+require_login();
+
 $context = context_system::instance();
+if (!has_capability('moodle/site:config', $context)) {
+    print_error('accessdenied', 'admin');
+}
+
 $PAGE->set_url(new moodle_url('/auth/askidnumber/exceptions/admin.php'));
 $PAGE->set_context($context);
 $PAGE->set_pagelayout('admin');
 $PAGE->set_heading(get_string('exceptionapplications', 'auth_askidnumber'));
-
-//echo 'User permissions check TODO!';
 
 if ($id = optional_param('accept', false, PARAM_INT)) {
     askidnumber_exceptions::accept($id);
