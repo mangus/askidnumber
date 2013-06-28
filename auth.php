@@ -9,6 +9,7 @@
 
 require_once($CFG->libdir.'/authlib.php');
 require_once('insertidnumber_form.php');
+require_once('exceptions/exceptions.php');
 
 class auth_plugin_askidnumber extends auth_plugin_base {
 
@@ -19,11 +20,15 @@ class auth_plugin_askidnumber extends auth_plugin_base {
 
     function user_authenticated_hook(&$user, $username, $password) {
 
-	    if (!$user->confirmed)
+        if (!$user->confirmed)
             return;
 
         if (isset($user->profile['dontaskidnumber']) && $user->profile['dontaskidnumber'])
             // Administrator has set dontaskidnumber to true
+            return;
+
+        if (askidnumber_exceptions::has_accepted_exception($user->id))
+            // User has requested freeing from ID-number insertion
             return;
 
         if (!auth_insertidnumber_form::valid_estonian_idnumber($user->idnumber)) {
@@ -71,6 +76,10 @@ class auth_plugin_askidnumber extends auth_plugin_base {
         $record->id = $userid;
         $record->idnumber = $idnumber;
         $DB->update_record('user', $record, false);
+
+        // Notify exceptions
+        askidnumber_exceptions::inserted_idnumber($userid);
+        
         $this->delete_key($key);
         $this->clean_old_keys();
         $this->login_user($userid);

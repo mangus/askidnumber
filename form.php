@@ -18,7 +18,7 @@ if ($fromform=$form->get_data()) {
     $ask = new auth_plugin_askidnumber();
     $ask->update_user_profile($fromform->secret, $fromform->idnumber);
     $goto = isset($SESSION->wantsurl) ? $SESSION->wantsurl : $CFG->wwwroot;
-    redirect($goto);    
+    redirect($goto);
 } else if (!$form->is_submitted()) {
     $key = required_param('key', PARAM_ALPHANUM);
     $form->set_data(array('secret' => $key));

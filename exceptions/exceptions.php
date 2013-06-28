@@ -1,6 +1,6 @@
 <?php
 
-require('../auth.php');
+require_once($CFG->dirroot . '/auth/askidnumber/auth.php');
 
 class askidnumber_exceptions {
 
@@ -23,6 +23,20 @@ class askidnumber_exceptions {
             return false;
         else
             return $info->sendtime;
+    }
+
+    public static function has_accepted_exception($userid) {
+        global $DB;
+        $info = $DB->get_record('ask_id_number_exception', array('userid' => $userid, 'status' => 'accepted'), 'id');
+        return empty($info->id) ? false : true;
+    }
+
+    public static function inserted_idnumber($userid) {
+        global $DB;
+        $record = $DB->get_record('ask_id_number_exception', array('userid' => $userid, 'status' => 'new'));
+        if (!empty($record->id)) {
+            self::update_status($record->id, 'inserted');
+        }
     }
 
     public static function accept($exceptionid) {

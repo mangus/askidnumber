@@ -5,3 +5,8 @@ Without ID-number it is not possible to login.
 There is also bulk action for making alot of users
 not to insert ID-number. For this to work,
 check /bulk_action/bulk_actions.php file at line 6.
+
+In addition this plugin handles exceptions of users
+who doesn't have an ID-number. Exceptions handling
+is located in /exceptions directory.
+
