@@ -1,6 +1,7 @@
 <?php
 
 require_once($CFG->dirroot . '/auth/askidnumber/auth.php');
+require_once($CFG->dirroot . '/user/profile/lib.php');
 
 class askidnumber_exceptions {
 
@@ -27,12 +28,6 @@ class askidnumber_exceptions {
             return $info->sendtime;
     }
 
-    public static function has_accepted_exception($userid) {
-        global $DB;
-        $info = $DB->get_record('ask_id_number_exception', array('userid' => $userid, 'status' => 'accepted'), 'id');
-        return empty($info->id) ? false : true;
-    }
-
     public static function inserted_idnumber($userid) {
         global $DB;
         $record = $DB->get_record('ask_id_number_exception', array('userid' => $userid, 'status' => 'new'));
@@ -42,7 +37,13 @@ class askidnumber_exceptions {
     }
 
     public static function accept($exceptionid) {
+	    global $DB;
         self::update_status($exceptionid, 'accepted');
+	    $exception = $DB->get_record('ask_id_number_exception', array('id' => $exceptionid));
+	    $update = new stdClass();
+        $update->id = $exception->userid;
+        $update->profile_field_dontaskidnumber = 1;
+	    profile_save_data($update);
         self::notify_user($exceptionid);
     }
 

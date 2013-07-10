@@ -76,7 +76,7 @@ Parimat,
 Moodle Administraator';
 
 $string['notify_admin_title'] = 'Moodle: isikukoodi vabastuse taotlus kasutajalt {$a->name}';
-$string['notify_admin_message'] = 'Kasutaja {$a->name} soovib saada kasutajatunnuse juurde isikukoodi sisestamise kohustusest vabastust ja põhjedab seda järgnevalt:
+$string['notify_admin_message'] = 'Kasutaja {$a->name} soovib saada kasutajatunnuse juurde isikukoodi sisestamise kohustusest vabastust ja põhjendab seda järgnevalt:
 
 {$a->reason}
 

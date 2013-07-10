@@ -27,10 +27,6 @@ class auth_plugin_askidnumber extends auth_plugin_base {
             // Administrator has set dontaskidnumber to true
             return;
 
-        if (askidnumber_exceptions::has_accepted_exception($user->id))
-            // User has requested freeing from ID-number insertion
-            return;
-
         if (!auth_insertidnumber_form::valid_estonian_idnumber($user->idnumber)) {
             redirect($this->generate_url($user->id));
         }
@@ -108,5 +104,17 @@ class auth_plugin_askidnumber extends auth_plugin_base {
         return $CFG->wwwroot.'/auth/askidnumber/form.php?key=' . $key;
     }
 
+    /* TODO here
+    function config_form($config, $err, $user_fields) {
+        $setting = new admin_setting_users_with_capability('notifyloginfailures', new lang_string('notifyloginfailures', 'admin'), new lang_string('confignotifyloginfailures', 'admin'), array(), 'moodle/site:config');
+        var_dump($setting); die('test');
+    }
+
+    function process_config($config) {
+        // save settings
+        set_config('recaptcha', $config->recaptcha, 'auth/email');
+        return true;
+    }
+    */
 }
 
