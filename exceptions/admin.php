@@ -25,13 +25,13 @@ $PAGE->set_heading(get_string('exceptionapplications', 'auth_askidnumber'));
 
 if ($id = optional_param('accept', false, PARAM_INT)) {
     askidnumber_exceptions::accept($id);
-    $message = get_string('messageaccepted', 'auth_askidnumber');
+    redirect(new moodle_url('/auth/askidnumber/exceptions/admin.php'), get_string('messageaccepted', 'auth_askidnumber'));
 }
 
 $form = new askidnumber_exception_reject_reason_form();
 if ($fromform=$form->get_data()) {
     askidnumber_exceptions::reject($fromform->exceptionid, $fromform->reason);
-    $message = get_string('messagerejected', 'auth_askidnumber');
+    redirect(new moodle_url('/auth/askidnumber/exceptions/admin.php'), get_string('messagerejected', 'auth_askidnumber'));
 }
 
 $PAGE->requires->js('/auth/askidnumber/exceptions/admin.js');
@@ -105,8 +105,7 @@ foreach($records as $request) {
 
 
 echo $OUTPUT->header();
-if (isset($message))
-    echo html_writer::tag('div', $message);
+
 echo html_writer::tag('h2', get_string('newrequests', 'auth_askidnumber'));
 echo html_writer::table($newtable);
 
