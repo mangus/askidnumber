@@ -59,16 +59,16 @@ $string['idnumberexceptions'] = 'Moodle ID-number insertion exceptions handling 
 $string['notify_accepted_title'] = 'Moodle: ID-number insertion exception accepted';
 $string['notify_accepted_message'] = 'Hello {$a->name},
 
-Sinu taotlus Moodle keskkonnas kasutajatunnusele isikukoodi sisestamisest vabastus saada on heaks kiidetud. Saad nüüd Moodle keskkonda sisse logida ja seda edukalt kasutada.
+Sinu taotlus Moodle keskkonnas kasutajatunnusele isikukoodi sisestamisest vabastus saada on heaks kiidetud. {$a->explanation}
 
-Kui soovid Moodles kasutada ID-kaardi või Mobiil-ID-ga sisse logimise võimalusi, siis soovitame sul esimesel võimalusel siiski isikukood enda profiilis ära märkida.
+Saad nüüd Moodle keskkonda sisse logida ja seda edukalt kasutada. Kui soovid Moodles kasutada ID-kaardi või Mobiil-ID-ga sisse logimise võimalusi, siis soovitame sul esimesel võimalusel siiski isikukood enda profiilis ära märkida.
 
 Parimat,
 Moodle Administraator';
 $string['notify_rejected_title'] = '"Moodle: ID-number insertion exception rejected';
 $string['notify_rejected_message'] = 'Hello {$a->name},
 
-Sinu taotlus Moodle keskkonnas kasutajatunnusele isikukoodi sisestamisest vabastus saada on tagasi lükatud. {$a->explination}
+Sinu taotlus Moodle keskkonnas kasutajatunnusele isikukoodi sisestamisest vabastus saada on tagasi lükatud. {$a->explanation}
 
 Järgmine kord Moodlesse sisse logides pead esmalt sisestama isikukoodi, et süsteemi edasi kasutada. Kui soovid siiski saada vabastust isikukoodi sisestamise nõudest, siis palun saada Moodle keskkonna kaudu uus põhjendatud taotlus isikukoodi sisestamise nõudest vabanemiseks.
 
@@ -81,4 +81,8 @@ $string['notify_admin_message'] = 'Kasutaja {$a->name} soovib saada kasutajatunn
 {$a->reason}
 
 Taotluse kinnitamiseks või tagasi lükkamiseks mine aadressile {$a->url}';
+
+$string['explanation'] = 'Explanation';
+$string['sendexplanation'] = 'Send this explanation to user';
+$string['senttouser'] = 'Explanation sent to user';
 

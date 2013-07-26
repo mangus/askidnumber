@@ -36,9 +36,9 @@ class askidnumber_exceptions {
         }
     }
 
-    public static function accept($exceptionid) {
+    public static function accept($exceptionid, $explanation, $touser) {
 	    global $DB;
-        self::update_status($exceptionid, 'accepted');
+        self::update_status($exceptionid, 'accepted', $explanation, $touser);
 	    $exception = $DB->get_record('ask_id_number_exception', array('id' => $exceptionid));
 	    $update = new stdClass();
         $update->id = $exception->userid;
@@ -52,14 +52,15 @@ class askidnumber_exceptions {
         self::notify_user($exceptionid);
     }
 
-    private static function update_status($exceptionid, $newstatus, $rejectreason = null) {
+    private static function update_status($exceptionid, $newstatus, $explanation = null, $touser = true) {
         global $DB;
         $data = new stdClass();
         $data->id = $exceptionid;
         $data->status = $newstatus;
         $data->statusupdatetime = time();
-        if ($rejectreason)
-            $data->rejectreason = $rejectreason;
+        if ($explanation)
+            $data->explanation = $explanation;
+        $data->explanationsent = $touser;
         $DB->update_record('ask_id_number_exception', $data);
     }
 
@@ -87,8 +88,14 @@ class askidnumber_exceptions {
         $from = get_string('idnumberexceptions', 'auth_askidnumber');
         $data = array(
             'name' => fullname($user),
-            'explination' => !empty($exception->rejectreason)
-                ? ("\n\n" . get_string_manager()->get_string('rejectreason', 'auth_askidnumber', null, $user->lang) . ': ' . $exception->rejectreason)
+            'explanation' => !empty($exception->explanation)
+                ?   ($exception->status == 'rejected'
+                        ? "\n\n" . get_string_manager()->get_string('rejectreason', 'auth_askidnumber', null, $user->lang) . ': ' . $exception->explanation
+                        :   ( $exception->explanationsent
+                                ? "\n\n" . get_string_manager()->get_string('explanation', 'auth_askidnumber', null, $user->lang) . ': ' . $exception->explanation
+                                : ''
+                            )
+                    )
                 : ''
         );
         switch ($exception->status) {

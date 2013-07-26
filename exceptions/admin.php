@@ -9,7 +9,8 @@
 
 require_once('../../../config.php');
 require_once('exceptions.php');
-require_once('reject_reason_form.php');
+require_once('reject_explanation_form.php');
+require_once('accept_explanation_form.php');
 
 require_login();
 
@@ -23,14 +24,15 @@ $PAGE->set_context($context);
 $PAGE->set_pagelayout('admin');
 $PAGE->set_heading(get_string('exceptionapplications', 'auth_askidnumber'));
 
-if ($id = optional_param('accept', false, PARAM_INT)) {
-    askidnumber_exceptions::accept($id);
+$form = new askidnumber_exception_accept_explanation_form();
+if ($fromform=$form->get_data()) {
+    askidnumber_exceptions::accept($fromform->exceptionid, $fromform->explanation, $fromform->explanationsent);
     redirect(new moodle_url('/auth/askidnumber/exceptions/admin.php'), get_string('messageaccepted', 'auth_askidnumber'));
 }
 
-$form = new askidnumber_exception_reject_reason_form();
+$form = new askidnumber_exception_reject_explanation_form();
 if ($fromform=$form->get_data()) {
-    askidnumber_exceptions::reject($fromform->exceptionid, $fromform->reason);
+    askidnumber_exceptions::reject($fromform->exceptionid, $fromform->explanation);
     redirect(new moodle_url('/auth/askidnumber/exceptions/admin.php'), get_string('messagerejected', 'auth_askidnumber'));
 }
 
@@ -73,15 +75,20 @@ foreach($records as $request) {
     switch ($request->status) {
         case 'new':
             $status = get_string('new');
-            $buttons[] = html_writer::link(new moodle_url('/auth/askidnumber/exceptions/admin.php', array('accept'=>$request->id)), get_string('accept', 'auth_askidnumber'));
-            $buttons[] = html_writer::link('#', get_string('reject', 'auth_askidnumber'), array('class' => 'yui-button'));
+            $buttons[] = html_writer::link('#', get_string('accept', 'auth_askidnumber'), array('class' => 'accept-button'));
+            $buttons[] = html_writer::link('#', get_string('reject', 'auth_askidnumber'), array('class' => 'reject-button'));
             break;
         case 'accepted':
             $status = get_string('accepted', 'auth_askidnumber') . '<br />' .  date('Y-m-d (H:i:s)', $request->statusupdatetime);
+            if (!empty($request->explanation)) {
+                $status .= '<br /><br />' . get_string('explanation', 'auth_askidnumber') . ': ' . nl2br(htmlspecialchars($request->explanation));
+                $status .= '<br /><br />' . get_string('senttouser', 'auth_askidnumber') . ': '
+                    . ($request->explanationsent ? get_string('yes') : get_string('no'));
+            }
             break;
         case 'rejected':
             $status = get_string('rejected', 'auth_askidnumber') . '<br />' .  date('Y-m-d (H:i:s)', $request->statusupdatetime)
-                . '<br /><br />' . get_string('rejectreason', 'auth_askidnumber') . ': ' . nl2br(htmlspecialchars($request->rejectreason));
+                . '<br /><br />' . get_string('rejectreason', 'auth_askidnumber') . ': ' . nl2br(htmlspecialchars($request->explanation));
             break;
         case 'inserted':
             $status = get_string('userinsertedidnumber', 'auth_askidnumber') . '<br />' .  date('Y-m-d (H:i:s)', $request->statusupdatetime);
@@ -92,9 +99,15 @@ foreach($records as $request) {
 
     if (count($buttons)) {
         $buttonsrow = html_writer::tag('span', implode('&nbsp;|&nbsp;', $buttons), array('id' => 'buttons_' . $request->id));
-        $form = new askidnumber_exception_reject_reason_form();
+
+        $form = new askidnumber_exception_reject_explanation_form();
         $form->set_data(array('exceptionid' => $request->id));
         $buttonsrow .= html_writer::tag('div', $form->render(), array('id' => 'reject_form_id_' . $request->id));
+
+        $form = new askidnumber_exception_accept_explanation_form();
+        $form->set_data(array('exceptionid' => $request->id));
+        $buttonsrow .= html_writer::tag('div', $form->render(), array('id' => 'accept_form_id_' . $request->id));
+
         $row[] = $buttonsrow;
         $newtable->data[] = $row;
     } else {
