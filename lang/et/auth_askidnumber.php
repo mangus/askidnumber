@@ -10,23 +10,23 @@ $string['youridnumber'] = 'Sinu isikukood';
 $string['err_whyempty'] = 'Palun sisesta allolevasse lahtrisse oma isikukood';
 $string['err_wronglenght'] = 'Isikukood peab olema täpselt 11 numbrit pikk';
 $string['err_notnumber'] = 'Isikukood tohib sisaldada ainult numbreid';
-$string['err_notunique'] = 'Sisestatud isikukoodiga kasutaja on Moodles juba olemas. Palun võta ühendust Moodle kasutajatoega (<a href="mailto:moodle@eitsa.ee">moodle@eitsa.ee</a>).';
+$string['err_notunique'] = 'Sisestatud isikukoodiga kasutaja on Moodles juba olemas. Palun võta ühendust Moodle kasutajatoega (<a href="mailto:moodle@hitsa.ee">moodle@hitsa.ee</a>).';
 $string['err_incorrectid'] = 'Sisestatud isikukood ei ole korrektne Eesti isikukood';
 
 $string['bulkactions'] = 'Isikukoodi sisestamisega seotud masstegevused';
 $string['bulkactionsintroduction'] = 'Selle vormi kaudu saab välja lülitada isikukoodi küsimist paljudel kasutajatel korraga.';
 $string['insertcommaseparatedlist'] = 'Sisesta komadega eraldatud kasutajate e-posti aadressid';
 
-$string['err_list'] = 'Sisestatud väärtus ei ole korrektne komadega eraldatud e-posti aadressite nimekiri.';
+$string['err_list'] = 'Sisestatud väärtus ei ole korrektne komadega eraldatud e-posti aadresside nimekiri.';
 
 $string['usersnotfound'] = 'Järgnevad e-posti aadressid ei ole ühegi Moodle kontoga seotud:';
-$string['usersmodified'] = 'Kasutajad (koos e-posti aadressitega), keda muudeti mitte küsima isikukoodi:';
+$string['usersmodified'] = 'Kasutajad (koos e-posti aadressidega), keda muudeti mitte küsima isikukoodi:';
 
 $string['toidcodeinsert'] = 'Isikukoodi sisestama';
 
 $string['exceptioninidnumberinsertion'] = 'Isikukoodi sisestusest vabastamise taotlemine';
 $string['noestonianidnumber'] = 'Mul ei ole Eesti isikukoodi';
-$string['exceptionreason'] = 'Käesoleval lehel saad taotleda oma kasutajatunnuse vabastamist isikukoodi sisestamise nõudest. Palun põhjenda, miks sa soovid saada vabastust isikukoodi sisestamisest Moodle keskkonnas?<br /><br />Kui sul on siiski olemas Eesti isikukood (kõigile Eesti Vabariigi kodanikele on välja antud isikukood), siis palun <a href="{$a->link}">pöördu tagasi eelmisele lehele</a>.<br /><br />NB! Isikukoodi puudumisel ei ole sul võimalik logida Moodlesse sisse ID-kaardi ega Mobiil-ID abil!';
+$string['exceptionreason'] = 'Käesoleval lehel saad taotleda oma kasutajatunnuse vabastamist isikukoodi sisestamise nõudest. Palun põhjenda, miks sa soovid saada vabastust isikukoodi sisestamisest Moodle keskkonnas?<br /><br />Kui sul on siiski olemas Eesti isikukood (kõigile Eesti Vabariigi kodanikele on välja antud isikukood), siis palun <a href="{$a->link}">pöördu tagasi eelmisele lehele ja sisesta oma isikukood</a>.<br /><br />NB! Isikukoodi puudumisel ei ole sul võimalik logida Moodlesse sisse ID-kaardi ega Mobiil-ID-ga!';
 $string['yourreason'] = 'Sinu põhjendus isikukoodi nõudest vabanemiseks:';
 $string['pleaseinsertreason'] = 'Palun sisesta põhjendus';
 $string['sendapplication'] = 'Esitan taotluse isikukoodi nõudest vabanemiseks';
