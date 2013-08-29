@@ -2,6 +2,7 @@
 
 require_once($CFG->dirroot . '/auth/askidnumber/auth.php');
 require_once($CFG->dirroot . '/user/profile/lib.php');
+require_once($CFG->dirroot . '/lib/adminlib.php');
 
 class askidnumber_exceptions {
 
@@ -64,21 +65,45 @@ class askidnumber_exceptions {
         $DB->update_record('ask_id_number_exception', $data);
     }
 
+    private static function get_exception_handlers() {
+        $setting = new admin_setting_users_with_capability(
+            'askidnumber/exception_handlers',
+            new lang_string('exception_handlers', 'auth_askidnumber'),
+            '',
+            array(),
+            'moodle/site:config'
+        );
+        $users = $setting->get_setting();
+        if ($users[0] == '$@NONE@$') {
+            $users = array();
+        } else if ($users[0] == '$@ALL@$') {
+            $users = array();
+            $capusers = get_users_by_capability(context_system::instance(), 'moodle/site:config', 'id');
+            foreach ($capusers as $user) {
+                $users[] = $user->id;
+            }
+        }
+        return $users;
+    }
+
     private static function notify_admin($exceptionid) {
         global $DB, $CFG;
         $exception = $DB->get_record('ask_id_number_exception', array('id' => $exceptionid));
         $user = $DB->get_record('user', array('id' => $exception->userid));
-        $admin = get_admin(); // TODO: maybe not the main admin?
         $data = array(
             'name' => fullname($user),
             'reason' => $exception->reason,
             'url' => $CFG->wwwroot . '/auth/askidnumber/exceptions/admin.php'
         );
-        $title = get_string_manager()->get_string('notify_admin_title', 'auth_askidnumber', $data, $admin->lang);
-        $message = get_string_manager()->get_string('notify_admin_message', 'auth_askidnumber', $data, $admin->lang);
-        $from = get_string_manager()->get_string('idnumberexceptions', 'auth_askidnumber', null, $admin->lang);
-        if (!email_to_user($admin, $from, $title, $message))
-            throw new exception('Sending notification to admin failed.');
+        foreach (self::get_exception_handlers() as $userid) {
+            $conditions = array('id' => $userid);
+            $emailto = $DB->get_record('user', $conditions, $fields='*');
+            $title = get_string_manager()->get_string('notify_admin_title', 'auth_askidnumber', $data, $emailto->lang);
+            $message = get_string_manager()->get_string('notify_admin_message', 'auth_askidnumber', $data, $emailto->lang);
+            $from = get_string_manager()->get_string('idnumberexceptions', 'auth_askidnumber', null, $emailto->lang);
+            if (!email_to_user($emailto, $from, $title, $message))
+                throw new exception('Sending notification to admin failed.');
+        }
     }
 
     private static function notify_user($exceptionid) {
@@ -105,7 +130,7 @@ class askidnumber_exceptions {
                 break;
             case 'rejected':
                 $title = get_string_manager()->get_string('notify_rejected_title', 'auth_askidnumber', null, $user->lang);
-                $message = get_string_manager()->get_string('notify_rejected_message', 'auth_askidnumber', $data, null, $user->lang);
+                $message = get_string_manager()->get_string('notify_rejected_message', 'auth_askidnumber', $data, $user->lang);
                 break;
             default:
                 throw new exception('Logic error in /auth/askidnumber/exceptions/exceptions.php');

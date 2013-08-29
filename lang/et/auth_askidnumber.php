@@ -1,6 +1,6 @@
 <?php
 
-$string['auth_askidnumberdescription'] = 'See moodul küsib pärast sisselogimist isikukoodi neilt kasutajalt, kes pole seda veel sisestanud.<br />Paljudel kasutajatel isikukoodi küsimise väljalülitamine käib <a href="/auth/askidnumber/bulk_actions/">selle vormi</a> kaudu.';
+$string['auth_askidnumberdescription'] = 'See moodul küsib pärast sisselogimist isikukoodi neilt kasutajalt, kes pole seda veel sisestanud.<br />Paljudel kasutajatel isikukoodi küsimise väljalülitamine käib <a href="/auth/askidnumber/bulk_actions/">selle vormi</a> kaudu.<br /><br /><a href="/auth/askidnumber/exceptions/admin.php">Erandite halduse lehekülg</a>';
 $string['pluginname'] = 'Küsi isikukoodi pärast sisselogimist';
 
 $string['pleaseinsertyouridnumber'] = 'Palun sisesta oma isikukood';
@@ -36,13 +36,14 @@ $string['unansweredapplication'] = 'Oled {$a->date} juba esitanud taotluse isiku
 
 $string['exceptionapplications'] = 'Isikukoodi sisestamisest vabastuse taotlused';
 $string['applicantname'] = 'Taotleja nimi';
+$string['usernameand'] = 'Kasutajanimi ja keel';
 $string['applicationsendtime'] = 'Taotluse esitamise aeg';
 $string['reason'] = 'Põhjendus';
 $string['choices'] = 'Valikud';
 
 $string['accepted'] = 'Kinnitatud';
 $string['accept'] = 'Kinnita';
-$string['reject'] = 'Lükka tagasi';
+$string['reject'] = 'Lükka&nbsp;tagasi';
 $string['rejected'] = 'Tagasi lükatud';
 $string['userinsertedidnumber'] = 'Kasutaja sisestas isikukoodi';
 
@@ -86,4 +87,5 @@ $string['explanation'] = 'Selgitus';
 $string['sendexplanation'] = 'Saada selgitus kasutajale';
 $string['senttouser'] = 'Selgitus saadeti kasutajale';
 
+$string['exception_handlers'] = 'Erandite töötlejad (erandite e-kirjade teavitus)';
 

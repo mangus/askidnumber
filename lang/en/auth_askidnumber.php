@@ -1,6 +1,6 @@
 <?php
 
-$string['auth_askidnumberdescription'] = 'This plugin asks users to insert their Estonian personal identification code as the ID-number during login if it is not set in user profile.<br />You can switch off ID-number asking for multiple users through <a href="/auth/askidnumber/bulk_actions/">this form</a>.';
+$string['auth_askidnumberdescription'] = 'This plugin asks users to insert their Estonian personal identification code as the ID-number during login if it is not set in user profile.<br />You can switch off ID-number asking for multiple users through <a href="/auth/askidnumber/bulk_actions/">this form</a>.<br /><br /><a href="/auth/askidnumber/exceptions/admin.php">Exceptions handling page</a>';
 $string['pluginname'] = 'Ask for ID-number after login';
 
 $string['pleaseinsertyouridnumber'] = 'Please insert your Estonian personal identification code';
@@ -35,7 +35,8 @@ $string['exceptionsent'] = 'Your application for an exemption for ID-number requ
 $string['unansweredapplication'] = 'You have already sent an application to free your account from the ID-number requirement at {$a->date}.<br /><br />Please wait for a reply from the site administrator. If you have an Estonian personal identification code (all Estonian citizen have been issued one), then please <a href="{$a->link}">return to the previous page and insert it</a>.';
 
 $string['exceptionapplications'] = 'ID-number requirement exemptions';
-$string['applicantname'] = 'Applicants name';
+$string['applicantname'] = 'Applicant name';
+$string['usernameand'] = 'Username and language';
 $string['applicationsendtime'] = 'Sent';
 $string['reason'] = 'Reason';
 $string['choices'] = 'Choices';
@@ -85,4 +86,6 @@ To review the applications and answer them visit {$a->url}';
 $string['explanation'] = 'Explanation';
 $string['sendexplanation'] = 'Send this explanation to user';
 $string['senttouser'] = 'Explanation sent to user';
+
+$string['exception_handlers'] = 'Exception handlers (exceptions e-mail recievers)';
 

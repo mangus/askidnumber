@@ -7,6 +7,9 @@ class askidnumber_exception_reject_explanation_form extends moodleform {
     function definition() {
         $mform =& $this->_form;
         $mform->addElement('textarea', 'explanation', get_string('rejectreason', 'auth_askidnumber'));
+        $mform->addElement('advcheckbox', 'explanationsent', get_string('sendexplanation', 'auth_askidnumber'));
+        $mform->setConstant('explanationsent', true);
+        $mform->updateElementAttr('explanationsent', array('disabled' => 'disabled'));
 
         $mform->addElement('hidden', 'exceptionid', '');
         $mform->setType('exceptionid', PARAM_INT);
