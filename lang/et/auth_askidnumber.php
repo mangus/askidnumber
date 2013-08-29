@@ -86,4 +86,5 @@ $string['explanation'] = 'Selgitus';
 $string['sendexplanation'] = 'Saada selgitus kasutajale';
 $string['senttouser'] = 'Selgitus saadeti kasutajale';
 
+$string['exception_handlers'] = 'Erandite töötlejad (erandite e-kirjade teavitus)';
 

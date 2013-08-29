@@ -86,3 +86,5 @@ $string['explanation'] = 'Explanation';
 $string['sendexplanation'] = 'Send this explanation to user';
 $string['senttouser'] = 'Explanation sent to user';
 
+$string['exception_handlers'] = 'Exception handlers (exceptions e-mail recievers)';
+

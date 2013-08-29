@@ -104,17 +104,26 @@ class auth_plugin_askidnumber extends auth_plugin_base {
         return $CFG->wwwroot.'/auth/askidnumber/form.php?key=' . $key;
     }
 
-    /* TODO here
     function config_form($config, $err, $user_fields) {
-        $setting = new admin_setting_users_with_capability('notifyloginfailures', new lang_string('notifyloginfailures', 'admin'), new lang_string('confignotifyloginfailures', 'admin'), array(), 'moodle/site:config');
-        var_dump($setting); die('test');
+        $setting = new admin_setting_users_with_capability(
+            'askidnumber/exception_handlers',
+            new lang_string('exception_handlers', 'auth_askidnumber'),
+            '',
+            array(),
+            'moodle/site:config'
+        );
+        echo $setting->output_html($setting->get_setting());
     }
 
     function process_config($config) {
-        // save settings
-        set_config('recaptcha', $config->recaptcha, 'auth/email');
-        return true;
+        $setting = new admin_setting_users_with_capability(
+            'askidnumber/exception_handlers',
+            new lang_string('exception_handlers', 'auth_askidnumber'),
+            '',
+            array(),
+            'moodle/site:config'
+        );
+        $setting->write_setting($config->s_askidnumber_exception_handlers);
     }
-    */
 }
 
