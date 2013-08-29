@@ -1,6 +1,6 @@
 <?php
 
-$string['auth_askidnumberdescription'] = 'This plugin asks users to insert their Estonian personal identification code as the ID-number during login if it is not set in user profile.<br />You can switch off ID-number asking for multiple users through <a href="/auth/askidnumber/bulk_actions/">this form</a>.';
+$string['auth_askidnumberdescription'] = 'This plugin asks users to insert their Estonian personal identification code as the ID-number during login if it is not set in user profile.<br />You can switch off ID-number asking for multiple users through <a href="/auth/askidnumber/bulk_actions/">this form</a>.<br /><br /><a href="/auth/askidnumber/exceptions/admin.php">Exceptions handling page</a>';
 $string['pluginname'] = 'Ask for ID-number after login';
 
 $string['pleaseinsertyouridnumber'] = 'Please insert your Estonian personal identification code';

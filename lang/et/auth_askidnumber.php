@@ -1,6 +1,6 @@
 <?php
 
-$string['auth_askidnumberdescription'] = 'See moodul küsib pärast sisselogimist isikukoodi neilt kasutajalt, kes pole seda veel sisestanud.<br />Paljudel kasutajatel isikukoodi küsimise väljalülitamine käib <a href="/auth/askidnumber/bulk_actions/">selle vormi</a> kaudu.';
+$string['auth_askidnumberdescription'] = 'See moodul küsib pärast sisselogimist isikukoodi neilt kasutajalt, kes pole seda veel sisestanud.<br />Paljudel kasutajatel isikukoodi küsimise väljalülitamine käib <a href="/auth/askidnumber/bulk_actions/">selle vormi</a> kaudu.<br /><br /><a href="/auth/askidnumber/exceptions/admin.php">Erandite halduse lehekülg</a>';
 $string['pluginname'] = 'Küsi isikukoodi pärast sisselogimist';
 
 $string['pleaseinsertyouridnumber'] = 'Palun sisesta oma isikukood';

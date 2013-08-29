@@ -12,7 +12,7 @@ require_once('exceptions.php');
 require_once('insert_form.php');
 
 $context = context_system::instance();
-$PAGE->set_url(new moodle_url('/auth/askidnumber/exceptions/insert.php'));
+$PAGE->set_url(new moodle_url('/auth/askidnumber/exceptions/insert.php?key=' . required_param('key', PARAM_ALPHANUM)));
 $PAGE->set_context($context);
 $PAGE->set_pagelayout('login');
 $PAGE->set_heading(get_string('exceptioninidnumberinsertion', 'auth_askidnumber'));
