@@ -31,7 +31,7 @@ $string['yourreason'] = 'Your reason to apply for an exemption to free Your acco
 $string['pleaseinsertreason'] = 'Please insert your explanation';
 $string['sendapplication'] = 'Send application to free Your account from ID-number requirement';
 $string['exceptionhandling'] = 'Application review is done by the site administrator and it will take about 24 hours. Please note that you will not be able use Moodle before your application has been reviewed.';
-$string['exceptionsent'] = 'Your application for an exemption for ID-number requirement has been sent and will be reviewed in 24 hours.<br /><br />Decision about Your application will be sent to Your e-mail address that You used during registring in Moodle. Please note that you will not be able use Moodle before your application has been reviewed.';
+$string['exceptionsent'] = 'Your application for an exemption for ID-number requirement has been sent and will be reviewed in 24 hours.<br /><br />Decision about Your application will be sent to Your e-mail address that You used during registering to Moodle. Please note that you will not be able use Moodle before your application has been reviewed.';
 $string['unansweredapplication'] = 'You have already sent an application to free your account from the ID-number requirement at {$a->date}.<br /><br />Please wait for a reply from the site administrator. If you have an Estonian personal identification code (all Estonian citizen have been issued one), then please <a href="{$a->link}">return to the previous page and insert it</a>.';
 
 $string['exceptionapplications'] = 'ID-number requirement exemptions';
@@ -71,7 +71,7 @@ $string['notify_rejected_message'] = 'Hello {$a->name},
 
 We are sorry to inform You, but your application to free Your account from the Estonian personal identification code (ID-number) requirement has been rejected. {$a->explanation}
 
-If You would like to continue using Moodle then you will have to enter Your Estonian personal identification code next time you log into Moodle. You can also apply for the exemption again by logging into Moodle and filling in the same form as previously. Please 
+If You would like to continue using Moodle then you will have to enter Your Estonian personal identification code next time you log into Moodle. You can also apply for the exemption again by logging into Moodle and filling in the same form as previously with updated information and explanation.
 
 Best of wishes,
 Moodle Administrator';
