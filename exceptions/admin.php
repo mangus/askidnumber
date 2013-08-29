@@ -45,7 +45,7 @@ $table->head = array();
 $table->colclasses = array();
 $table->head[] = get_string('applicantname', 'auth_askidnumber');
 $table->colclasses[] = 'leftalign';
-$table->head[] = get_string('username');
+$table->head[] = get_string('usernameand', 'auth_askidnumber');
 $table->colclasses[] = 'leftalign';
 $table->head[] = get_string('applicationsendtime', 'auth_askidnumber');
 $table->colclasses[] = 'leftalign';
@@ -63,11 +63,11 @@ $newtable->colclasses[] = 'centeralign';
 
 foreach($records as $request) {
 
-    $user = $DB->get_record('user', array('id' => $request->userid), $fields='firstname, lastname, username');
+    $user = $DB->get_record('user', array('id' => $request->userid), $fields='firstname, lastname, username, lang');
     $row = array();
     $fullname = fullname($user);
     $row[] = "<a target=\"blank\" href=\"/user/view.php?id=$request->userid\">$fullname</a>";
-    $row[] = "<a target=\"blank\" href=\"/user/view.php?id=$request->userid\">$user->username</a>";
+    $row[] = "<a target=\"blank\" href=\"/user/view.php?id=$request->userid\">$user->username</a><br />" . $user->lang;
     $row[] = date('Y-m-d (H:i:s)', $request->sendtime);
     $row[] = nl2br(htmlspecialchars($request->reason));
 

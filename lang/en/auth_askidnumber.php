@@ -35,7 +35,8 @@ $string['exceptionsent'] = 'Your application for an exemption for ID-number requ
 $string['unansweredapplication'] = 'You have already sent an application to free your account from the ID-number requirement at {$a->date}.<br /><br />Please wait for a reply from the site administrator. If you have an Estonian personal idetification code (all Estonian citizen have been issued one), then please <a href="{$a->link}">return to the previous page and insert it</a>.';
 
 $string['exceptionapplications'] = 'ID-number requirement exemptions';
-$string['applicantname'] = 'Applicants name';
+$string['applicantname'] = 'Applicant name';
+$string['usernameand'] = 'Username and language';
 $string['applicationsendtime'] = 'Sent';
 $string['reason'] = 'Reason';
 $string['choices'] = 'Choices';

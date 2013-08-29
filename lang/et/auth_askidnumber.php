@@ -36,13 +36,14 @@ $string['unansweredapplication'] = 'Oled {$a->date} juba esitanud taotluse isiku
 
 $string['exceptionapplications'] = 'Isikukoodi sisestamisest vabastuse taotlused';
 $string['applicantname'] = 'Taotleja nimi';
+$string['usernameand'] = 'Kasutajanimi ja keel';
 $string['applicationsendtime'] = 'Taotluse esitamise aeg';
 $string['reason'] = 'Põhjendus';
 $string['choices'] = 'Valikud';
 
 $string['accepted'] = 'Kinnitatud';
 $string['accept'] = 'Kinnita';
-$string['reject'] = 'Lükka tagasi';
+$string['reject'] = 'Lükka&nbsp;tagasi';
 $string['rejected'] = 'Tagasi lükatud';
 $string['userinsertedidnumber'] = 'Kasutaja sisestas isikukoodi';
 
