@@ -130,7 +130,7 @@ class askidnumber_exceptions {
                 break;
             case 'rejected':
                 $title = get_string_manager()->get_string('notify_rejected_title', 'auth_askidnumber', null, $user->lang);
-                $message = get_string_manager()->get_string('notify_rejected_message', 'auth_askidnumber', $data, null, $user->lang);
+                $message = get_string_manager()->get_string('notify_rejected_message', 'auth_askidnumber', $data, $user->lang);
                 break;
             default:
                 throw new exception('Logic error in /auth/askidnumber/exceptions/exceptions.php');
