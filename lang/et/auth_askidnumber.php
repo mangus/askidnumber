@@ -66,7 +66,7 @@ Saad nüüd Moodle keskkonda sisse logida ja seda edukalt kasutada. Kui soovid M
 
 Parimat,
 Moodle Administraator';
-$string['notify_rejected_title'] = '"Moodle: isikukoodi vabastuse taotlus on tagasi lükatud';
+$string['notify_rejected_title'] = 'Moodle: isikukoodi vabastuse taotlus on tagasi lükatud';
 $string['notify_rejected_message'] = 'Tere {$a->name},
 
 Sinu taotlus Moodle keskkonnas kasutajatunnusele isikukoodi sisestamisest vabastus saada on tagasi lükatud. {$a->explanation}
