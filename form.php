@@ -6,7 +6,7 @@ require_once('insertidnumber_form.php');
 
 $context = get_context_instance(CONTEXT_SYSTEM);
 
-$PAGE->set_url("$CFG->httpswwwroot/auth/askidnumber/form.php?key=" . required_param('key', PARAM_ALPHANUM));
+$PAGE->set_url("$CFG->httpswwwroot/auth/askidnumber/form.php");
 $PAGE->set_context($context);
 $PAGE->set_pagelayout('login');
 
