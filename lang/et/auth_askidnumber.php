@@ -57,24 +57,24 @@ $string['proccessedrequests'] = 'Töödeldud taotlused';
 
 $string['idnumberexceptions'] = 'Moodle isikukoodi erandite haldussüsteem';
 
-$string['notify_accepted_title'] = 'Moodle: isikukoodi vabastuse taotlus on heaks kiidetud';
+$string['notify_accepted_title'] = 'Moodle: isikukoodi vabastuse taotlus on HEAKS KIIDETUD';
 $string['notify_accepted_message'] = 'Tere {$a->name},
 
-Sinu taotlus Moodle keskkonnas kasutajatunnusele isikukoodi sisestamisest vabastus saada on heaks kiidetud. {$a->explanation}
+Sinu taotlus Moodle keskkonnas ({$a->siteurl}) kasutajatunnusele isikukoodi sisestamisest vabastus saada on HEAKS KIIDETUD. {$a->explanation}
 
 Saad nüüd Moodle keskkonda sisse logida ja seda edukalt kasutada. Kui soovid Moodles kasutada ID-kaardi või Mobiil-ID-ga sisse logimise võimalusi, siis soovitame sul esimesel võimalusel siiski isikukood enda profiilis ära märkida.
 
-Parimat,
-Moodle Administraator';
-$string['notify_rejected_title'] = 'Moodle: isikukoodi vabastuse taotlus on tagasi lükatud';
+Tervitustega '{$a->sitename}' administraatorilt,
+{$a->signoff}';
+$string['notify_rejected_title'] = 'Moodle: isikukoodi vabastuse taotlus on TAGASI LÜKATUD';
 $string['notify_rejected_message'] = 'Tere {$a->name},
 
-Sinu taotlus Moodle keskkonnas kasutajatunnusele isikukoodi sisestamisest vabastus saada on tagasi lükatud. {$a->explanation}
+Sinu taotlus Moodle keskkonnas ({$a->siteurl}) kasutajatunnusele isikukoodi sisestamisest vabastus saada on TAGASI LÜKATUD. {$a->explanation}
 
 Järgmine kord Moodlesse sisse logides pead esmalt sisestama isikukoodi, et süsteemi edasi kasutada. Kui soovid siiski saada vabastust isikukoodi sisestamise nõudest, siis palun saada Moodle keskkonna kaudu uus põhjendatud taotlus isikukoodi sisestamise nõudest vabanemiseks.
 
-Parimat,
-Moodle Administraator';
+Tervitustega '{$a->sitename}' administraatorilt,
+{$a->signoff}';
 
 $string['notify_admin_title'] = 'Moodle: isikukoodi vabastuse taotlus kasutajalt {$a->name}';
 $string['notify_admin_message'] = 'Kasutaja {$a->name} soovib saada kasutajatunnuse juurde isikukoodi sisestamise kohustusest vabastust ja põhjendab seda järgnevalt:
