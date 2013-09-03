@@ -60,21 +60,21 @@ $string['idnumberexceptions'] = 'Moodle ID-number requirement exemptions adminis
 $string['notify_accepted_title'] = 'Moodle: ID-number requirement exemption ACCEPTED';
 $string['notify_accepted_message'] = 'Hello {$a->name},
 
-Your application to free Your account from the requirement of insterting Your Estonian personal identification code (ID-number) has been accepted. {$a->explanation}
+Your application to free Your account from the requirement of insterting Your Estonian personal identification code (ID-number) has been ACCEPTED. {$a->explanation}
 
-You can now start using Moodle. If You would like to use the Estonian ID-card or Mobile-ID to log into Moodle then we would suggest for You to open your profile and insert Your Estonian personal identification code into the ID-number field.
+You can now start using Moodle ({$a->siteurl}). If You would like to use the Estonian ID-card or Mobile-ID to log into Moodle then we would suggest for You to open your profile and insert Your Estonian personal identification code into the ID-number field.
 
-Best of wishes,
-Moodle Administrator';
+Cheers from the '{$a->sitename}' administrator,
+{$a->signoff}';
 $string['notify_rejected_title'] = 'Moodle: ID-number requirement exemption REJECTED';
 $string['notify_rejected_message'] = 'Hello {$a->name},
 
-We are sorry to inform You, but your application to free Your account from the Estonian personal identification code (ID-number) requirement has been rejected. {$a->explanation}
+We are sorry to inform You, but your application to free Your account from the Estonian personal identification code (ID-number) requirement has been REJECTED.{$a->explanation}
 
-If You would like to continue using Moodle then you will have to enter Your Estonian personal identification code next time you log into Moodle. You can also apply for the exemption again by logging into Moodle and filling in the same form as previously with updated information and explanation.
+If You would like to continue using Moodle ({$a->siteurl}) then you will have to enter Your Estonian personal identification code next time you log into Moodle. You can also apply for the exemption again by logging into Moodle and filling in the same form as previously with updated information and explanation.
 
-Best of wishes,
-Moodle Administrator';
+Cheers from the '{$a->sitename}' administrator,
+{$a->signoff}';
 
 $string['notify_admin_title'] = 'Moodle: New application for personal identification code exemption by {$a->name}';
 $string['notify_admin_message'] = 'The user {$a->name} would like to get an exemption for the ID-number requirement and explains it in the following way:
