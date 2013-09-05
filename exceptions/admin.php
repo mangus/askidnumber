@@ -69,7 +69,7 @@ foreach($records as $request) {
     $row[] = "<a target=\"blank\" href=\"/user/view.php?id=$request->userid\">$fullname</a>";
     $row[] = "<a target=\"blank\" href=\"/user/view.php?id=$request->userid\">$user->username</a><br />" . $user->lang;
     $row[] = date('Y-m-d (H:i:s)', $request->sendtime);
-    $row[] = nl2br(htmlspecialchars($request->reason));
+    $row[] = wordwrap(nl2br(htmlspecialchars($request->reason)), 50, ' ', true);
 
     $buttons = array();
     switch ($request->status) {
@@ -81,14 +81,16 @@ foreach($records as $request) {
         case 'accepted':
             $status = get_string('accepted', 'auth_askidnumber') . '<br />' .  date('Y-m-d (H:i:s)', $request->statusupdatetime);
             if (!empty($request->explanation)) {
-                $status .= '<br /><br />' . get_string('explanation', 'auth_askidnumber') . ': ' . nl2br(htmlspecialchars($request->explanation));
+                $status .= '<br /><br />' . get_string('explanation', 'auth_askidnumber') . ': '
+                    . wordwrap(nl2br(htmlspecialchars($request->explanation)), 25, ' ', true);
                 $status .= '<br /><br />' . get_string('senttouser', 'auth_askidnumber') . ': '
                     . ($request->explanationsent ? get_string('yes') : get_string('no'));
             }
             break;
         case 'rejected':
             $status = get_string('rejected', 'auth_askidnumber') . '<br />' .  date('Y-m-d (H:i:s)', $request->statusupdatetime)
-                . '<br /><br />' . get_string('rejectreason', 'auth_askidnumber') . ': ' . nl2br(htmlspecialchars($request->explanation));
+                . '<br /><br />' . get_string('rejectreason', 'auth_askidnumber') . ': '
+                    . wordwrap(nl2br(htmlspecialchars($request->explanation)), 25, ' ', true);
             break;
         case 'inserted':
             $status = get_string('userinsertedidnumber', 'auth_askidnumber') . '<br />' .  date('Y-m-d (H:i:s)', $request->statusupdatetime);

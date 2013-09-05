@@ -107,7 +107,7 @@ class askidnumber_exceptions {
     }
 
     private static function notify_user($exceptionid) {
-        global $DB;
+        global $DB, $CFG;
         $exception = $DB->get_record('ask_id_number_exception', array('id' => $exceptionid));
         $user = $DB->get_record('user', array('id' => $exception->userid));
         $from = get_string('idnumberexceptions', 'auth_askidnumber');
@@ -117,11 +117,14 @@ class askidnumber_exceptions {
                 ?   ($exception->status == 'rejected'
                         ? "\n\n" . get_string_manager()->get_string('rejectreason', 'auth_askidnumber', null, $user->lang) . ': ' . $exception->explanation
                         :   ( $exception->explanationsent
-                                ? "\n\n" . get_string_manager()->get_string('explanation', 'auth_askidnumber', null, $user->lang) . ': ' . $exception->explanation
+                                ? "\n\n" . $exception->explanation
                                 : ''
                             )
                     )
-                : ''
+                : '',
+            'siteurl' => $CFG->wwwroot,
+            'sitename' => get_config('core', 'fullname'),
+            'supportemail' => $CFG->supportemail
         );
         switch ($exception->status) {
             case 'accepted':

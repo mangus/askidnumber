@@ -64,8 +64,8 @@ Sinu taotlus Moodle keskkonnas ({$a->siteurl}) kasutajatunnusele isikukoodi sise
 
 Saad nüüd Moodle keskkonda sisse logida ja seda edukalt kasutada. Kui soovid Moodles kasutada ID-kaardi või Mobiil-ID-ga sisse logimise võimalusi, siis soovitame sul esimesel võimalusel siiski isikukood enda profiilis ära märkida.
 
-Tervitustega '{$a->sitename}' administraatorilt,
-{$a->signoff}';
+Tervitustega "{$a->sitename}" administraatorilt,
+{$a->supportemail}';
 $string['notify_rejected_title'] = 'Moodle: isikukoodi vabastuse taotlus on TAGASI LÜKATUD';
 $string['notify_rejected_message'] = 'Tere {$a->name},
 
@@ -73,8 +73,8 @@ Sinu taotlus Moodle keskkonnas ({$a->siteurl}) kasutajatunnusele isikukoodi sise
 
 Järgmine kord Moodlesse sisse logides pead esmalt sisestama isikukoodi, et süsteemi edasi kasutada. Kui soovid siiski saada vabastust isikukoodi sisestamise nõudest, siis palun saada Moodle keskkonna kaudu uus põhjendatud taotlus isikukoodi sisestamise nõudest vabanemiseks.
 
-Tervitustega '{$a->sitename}' administraatorilt,
-{$a->signoff}';
+Tervitustega "{$a->sitename}" administraatorilt,
+{$a->supportemail}';
 
 $string['notify_admin_title'] = 'Moodle: isikukoodi vabastuse taotlus kasutajalt {$a->name}';
 $string['notify_admin_message'] = 'Kasutaja {$a->name} soovib saada kasutajatunnuse juurde isikukoodi sisestamise kohustusest vabastust ja põhjendab seda järgnevalt:
