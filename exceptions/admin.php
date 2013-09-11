@@ -86,8 +86,8 @@ foreach(array_merge($newrecords, $oldrecords) as $request) {
     switch ($request->status) {
         case 'new':
             $status = get_string('new');
-            $buttons[] = html_writer::link('#', get_string('accept', 'auth_askidnumber'), array('class' => 'accept-button'));
-            $buttons[] = html_writer::link('#', get_string('reject', 'auth_askidnumber'), array('class' => 'reject-button'));
+            $buttons[] = html_writer::link('javascript:;', get_string('accept', 'auth_askidnumber'), array('class' => 'accept-button'));
+            $buttons[] = html_writer::link('javascript:;', get_string('reject', 'auth_askidnumber'), array('class' => 'reject-button'));
             break;
         case 'accepted':
             $status = get_string('accepted', 'auth_askidnumber') . '<br />' .  date('Y-m-d (H:i:s)', $request->statusupdatetime);
