@@ -26,7 +26,7 @@ $PAGE->set_heading(get_string('exceptionapplications', 'auth_askidnumber'));
 
 // Pagination
 $start = abs(optional_param('start', 0, PARAM_INT));
-$perpage = 20;
+$perpage = 100;
 
 $form = new askidnumber_exception_accept_explanation_form();
 if ($fromform=$form->get_data()) {
