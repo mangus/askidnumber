@@ -121,10 +121,10 @@ foreach($records as $request) {
 
 echo $OUTPUT->header();
 
-echo html_writer::tag('h2', get_string('newrequests', 'auth_askidnumber'));
+echo html_writer::tag('h2', get_string('newrequests', 'auth_askidnumber') . ' (' . count($newtable->data) . ')');
 echo html_writer::table($newtable);
 
-echo html_writer::tag('h2', get_string('proccessedrequests', 'auth_askidnumber'));
+echo html_writer::tag('h2', get_string('proccessedrequests', 'auth_askidnumber') . ' (' . count($oldtable->data) . ')');
 echo html_writer::table($oldtable);
 
 echo $OUTPUT->footer();
