@@ -110,7 +110,7 @@ class askidnumber_exceptions {
         global $DB, $CFG;
         $exception = $DB->get_record('ask_id_number_exception', array('id' => $exceptionid));
         $user = $DB->get_record('user', array('id' => $exception->userid));
-        $from = get_string('idnumberexceptions', 'auth_askidnumber');
+        $from = get_string_manager()->get_string('idnumberexceptions', 'auth_askidnumber', null, $user->lang);
         $data = array(
             'name' => fullname($user),
             'explanation' => !empty($exception->explanation)

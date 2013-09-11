@@ -55,7 +55,7 @@ $string['rejectreason'] = 'Reason for rejection';
 $string['newrequests'] = 'New requests';
 $string['proccessedrequests'] = 'Processed requests';
 
-$string['idnumberexceptions'] = 'Moodle ID-number requirement exemptions administration system';
+$string['idnumberexceptions'] = 'Moodle ID-number exceptions system';
 
 $string['notify_accepted_title'] = 'Moodle: ID-number requirement exemption ACCEPTED';
 $string['notify_accepted_message'] = 'Hello {$a->name},
