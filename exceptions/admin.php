@@ -24,6 +24,10 @@ $PAGE->set_context($context);
 $PAGE->set_pagelayout('admin');
 $PAGE->set_heading(get_string('exceptionapplications', 'auth_askidnumber'));
 
+// Pagination
+$start = abs(optional_param('start', 0, PARAM_INT));
+$perpage = 20;
+
 $form = new askidnumber_exception_accept_explanation_form();
 if ($fromform=$form->get_data()) {
     askidnumber_exceptions::accept($fromform->exceptionid, $fromform->explanation, $fromform->explanationsent);
@@ -37,7 +41,14 @@ if ($fromform=$form->get_data()) {
 }
 
 $PAGE->requires->js('/auth/askidnumber/exceptions/admin.js');
-$records = $DB->get_records('ask_id_number_exception', null, 'sendtime DESC');
+
+if ($start)
+    $newrecords = array(); // In pagination we don't show new requests
+else
+    $newrecords = $DB->get_records('ask_id_number_exception', array('status' => 'new'), 'sendtime DESC');
+
+$oldrecords = $DB->get_records_select('ask_id_number_exception', "status <> 'new' ORDER BY sendtime DESC LIMIT $start, $perpage");
+$oldcount = $DB->count_records_select('ask_id_number_exception', "status <> 'new'"); 
 
 $table = new html_table();
 $table->attributes['class'] = 'admintable generaltable';
@@ -61,7 +72,7 @@ $oldtable->colclasses[] = 'centeralign';
 $newtable->head[] = get_string('choices', 'auth_askidnumber');
 $newtable->colclasses[] = 'centeralign';
 
-foreach($records as $request) {
+foreach(array_merge($newrecords, $oldrecords) as $request) {
 
     $user = $DB->get_record('user', array('id' => $request->userid), $fields='firstname, lastname, username, lang');
     $row = array();
@@ -121,11 +132,40 @@ foreach($records as $request) {
 
 echo $OUTPUT->header();
 
-echo html_writer::tag('h2', get_string('newrequests', 'auth_askidnumber') . ' (' . count($newtable->data) . ')');
-echo html_writer::table($newtable);
+if (!$start) {
+    echo html_writer::tag('h2', get_string('newrequests', 'auth_askidnumber') . ' (' . count($newtable->data) . ')');
+    echo html_writer::table($newtable);
+}
 
-echo html_writer::tag('h2', get_string('proccessedrequests', 'auth_askidnumber') . ' (' . count($oldtable->data) . ')');
+echo html_writer::tag('h2', get_string('proccessedrequests', 'auth_askidnumber') . " ($oldcount)");
 echo html_writer::table($oldtable);
+
+if ($oldcount > $perpage) { // Pagination
+
+    $paginationlinks = array();
+
+    $first = $start - $perpage;
+    if ($first > 0)
+        $paginationlinks[] = html_writer::link("?start=$first", '&lt;');
+    else
+        $paginationlinks[] = '&lt;';
+
+    $linknr = 1;
+    for ($i = 0; $i < $oldcount; $i += $perpage) {
+        if ($start == $i)
+            $paginationlinks[] = $linknr++;    
+        else
+            $paginationlinks[] = html_writer::link("?start=$i", $linknr++);    
+    }
+
+    $last = $start + $perpage;
+    if ($last < $oldcount)
+        $paginationlinks[] = html_writer::link("?start=$last", '&gt;');
+    else
+        $paginationlinks[] = '&gt;';
+
+    echo html_writer::tag('span', implode(' ', $paginationlinks), array('class' => 'centered'));
+}
 
 echo $OUTPUT->footer();
 
