@@ -123,7 +123,7 @@ class askidnumber_exceptions {
                     )
                 : '',
             'siteurl' => $CFG->wwwroot,
-            'sitename' => get_config('core', 'fullname'),
+            'sitename' => get_site()->fullname,
             'supportemail' => $CFG->supportemail
         );
         switch ($exception->status) {
