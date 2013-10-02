@@ -43,7 +43,7 @@ $string['choices'] = 'Valikud';
 
 $string['accepted'] = 'Kinnitatud';
 $string['accept'] = 'Kinnita';
-$string['reject'] = 'Lükka&nbsp;tagasi';
+$string['reject'] = 'Lükka tagasi';
 $string['rejected'] = 'Tagasi lükatud';
 $string['userinsertedidnumber'] = 'Kasutaja sisestas isikukoodi';
 
