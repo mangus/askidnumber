@@ -111,7 +111,9 @@ foreach(array_merge($newrecords, $oldrecords) as $request) {
     }
 
     if (count($buttons)) {
-        $buttonsrow = html_writer::tag('span', implode('&nbsp;|&nbsp;', $buttons), array('id' => 'buttons_' . $request->id));
+        
+        $buttonsrow = html_writer::tag('span', implode(' | ', $buttons),
+            array('id' => 'buttons_' . $request->id, 'style' => 'white-space: nowrap;'));
 
         $form = new askidnumber_exception_reject_explanation_form();
         $form->set_data(array('exceptionid' => $request->id));
