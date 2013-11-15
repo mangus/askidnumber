@@ -10,6 +10,6 @@ In addition this plugin handles exceptions of users
 who doesn't have an ID-number. Exceptions handling
 is located in /exceptions directory.
 
-To install a link in the navigation block, move
-the folder 'local' to your Moodle root http directory.
-
+To install a link (/exceptions/admin.php) to the
+admin menu, move the folder 'local' to your Moodle
+root http directory.
