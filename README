@@ -12,4 +12,4 @@ is located in /exceptions directory.
 
 To add a link of exceptions administration to the
 Moodle admin menu, move the folder 'local/askidnumber'
-to your Moodle local plugins directory (/local).
+to your Moodle local plugins directory ('local/').
