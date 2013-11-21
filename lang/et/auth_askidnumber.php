@@ -52,6 +52,7 @@ $string['messagerejected'] = 'Kasutaja taotlus tagasi lükatud.';
 
 $string['rejectreason'] = 'Tagasi lükkamise põhjus';
 
+$string['menunewrequests'] = 'Isikukoodi erandid';
 $string['newrequests'] = 'Uued vabastamise taotlused';
 $string['proccessedrequests'] = 'Töödeldud taotlused';
 

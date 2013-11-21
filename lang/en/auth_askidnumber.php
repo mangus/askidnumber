@@ -52,6 +52,7 @@ $string['messagerejected'] = 'Application rejected.';
 
 $string['rejectreason'] = 'Reason for rejection';
 
+$string['menunewrequests'] = 'ID-number exemptions';
 $string['newrequests'] = 'New requests';
 $string['proccessedrequests'] = 'Processed requests';
 
